@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="../_ds/modernist-a62dee29-991e-40be-999a-a516efac0dee/styles.css">
+<script src="../_ds/modernist-a62dee29-991e-40be-999a-a516efac0dee/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="../js/image-slot.js"></script>
+<style>
+  /* accent retuned to a deep ink-blue — the system red read too loud against the warm ground */
+  :root { --color-accent:#24405e; --color-accent-600:#1c3049; --color-accent-700:#16283d;
+    --color-accent-100:#eef1f5; --color-accent-200:#dce2ea; }
+  body { margin:0; background:var(--color-bg); color:var(--color-text);
+    font-family:var(--font-body),"Noto Sans SC",sans-serif; text-wrap:pretty; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family:var(--font-heading),"Noto Sans SC",sans-serif; }
+  a { color:var(--color-text); text-decoration:none; }
+  a:hover { color:var(--color-accent-700); }
+  /* one language at a time */
+  html[data-lang="en"] [data-l="zh"] { display:none; }
+  html:not([data-lang="en"]) [data-l="en"] { display:none; }
+  /* routing */
+  [data-page] { display:none; }
+  html[data-route="home"] [data-page="home"], html:not([data-route]) [data-page="home"],
+  html[data-route="work"] [data-page="work"],
+  html[data-route="research"] [data-page="research"],
+  html[data-route="notes"] [data-page="notes"],
+  html[data-route="life"] [data-page="life"],
+  html[data-route="about"] [data-page="about"] { display:block; }
+  [data-nav] { color:var(--color-text); padding:4px 0; border-bottom:2px solid transparent; }
+  [data-nav]:hover { border-bottom-color:var(--color-neutral-400); }
+  html[data-route="work"] [data-nav="work"], html[data-route="research"] [data-nav="research"],
+  html[data-route="notes"] [data-nav="notes"], html[data-route="life"] [data-nav="life"],
+  html[data-route="about"] [data-nav="about"] { border-bottom-color:var(--color-accent); }
+  @media (max-width: 720px) {
+    [data-r="two"], [data-r="case"] { grid-template-columns:1fr !important; }
+    [data-r="three"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+    [data-r="navwrap"] { flex-wrap:wrap; gap:14px !important; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#f3f2f2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f3f2f2"/><rect x="18" y="42" width="64" height="16" fill="#ec3013"/><text x="18" y="36" font-family="Archivo,sans-serif" font-size="14" font-weight="800" fill="#201e1d">BUG</text></svg></template>
+
+<header style="position:sticky;top:0;z-index:30;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
+  <div data-r="navwrap" style="max-width:1280px;margin:0 auto;padding:16px clamp(20px,4vw,56px);display:flex;align-items:center;gap:clamp(20px,4vw,48px)">
+    <a href="#home" style="display:flex;align-items:center;gap:10px;flex:none">
+      <img src="../assets/podcast-cover.png" alt="" style="width:30px;height:30px">
+      <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:14px;letter-spacing:.14em;text-transform:uppercase">ABU</span>
+    </a>
+    <nav style="display:flex;gap:clamp(16px,2.4vw,32px);font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase">
+      <a data-nav="work" href="#work"><span data-l="zh">作品</span><span data-l="en">Work</span></a>
+      <a data-nav="research" href="#research"><span data-l="zh">研究</span><span data-l="en">Research</span></a>
+      <a data-nav="notes" href="#notes"><span data-l="zh">记录</span><span data-l="en">Notes</span></a>
+      <a data-nav="life" href="#life"><span data-l="zh">生活</span><span data-l="en">Life</span></a>
+      <a data-nav="about" href="#about"><span data-l="zh">关于</span><span data-l="en">About</span></a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:18px;font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase">
+      <button type="button" onClick="{{ toggleLang }}" style="cursor:pointer;background:transparent;border:0;padding:0;font:inherit;letter-spacing:.12em;color:var(--color-neutral-700)">{{ langLabel }}</button>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main style="max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,104px) clamp(20px,4vw,56px) clamp(64px,8vw,120px)">
+
+  <section data-page="home">
+    <h1 style="font-size:clamp(38px,5.6vw,76px);font-weight:800;line-height:1.04;letter-spacing:-.035em;margin:0 0 28px;max-width:16ch">
+      <span data-l="zh">我做我希望存在的东西。</span>
+      <span data-l="en">I build things I want to exist.</span>
+    </h1>
+    <p style="font-size:clamp(17px,1.5vw,20px);line-height:1.65;max-width:44ch;margin:0 0 36px;color:var(--color-neutral-700)">
+      <span data-l="zh">一个人做产品，也研究市场的脾气；顺手记下那些一想起来就会慢下来的事。</span>
+      <span data-l="en">I make things alone, study how markets behave, and keep notes on whatever makes me slow down and think.</span>
+    </p>
+    <p style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 clamp(48px,6vw,80px);font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700)">
+      <span>Product Design</span><span>·</span><span>Engineering</span><span>·</span><span>Quant Research</span>
+    </p>
+
+    <div style="display:flex;align-items:baseline;gap:16px;margin:0 0 4px">
+      <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0;color:var(--color-neutral-700)"><span data-l="zh">精选作品</span><span data-l="en">Selected work</span></h2>
+      <a href="#work" style="margin-left:auto;font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700)"><span data-l="zh">全部作品 →</span><span data-l="en">All work →</span></a>
+    </div>
+    <hr class="hr" style="margin:0 0 clamp(28px,3.5vw,44px)">
+
+    <article data-r="case" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(24px,4vw,56px);align-items:start;padding:0 0 clamp(32px,4vw,48px);border-bottom:2px solid var(--color-divider);margin:0 0 clamp(32px,4vw,48px)">
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">iOS · <span data-l="zh">已上架</span><span data-l="en">Shipped</span></p>
+        <h3 style="font-size:clamp(28px,3.2vw,40px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin:0 0 14px">ReadShot</h3>
+        <p style="font-size:clamp(17px,1.5vw,20px);line-height:1.55;max-width:34ch;margin:0 0 20px">
+          <span data-l="zh">把拍下来的文字，变成真的记得住的东西。</span>
+          <span data-l="en">Turn photographed text into something worth remembering.</span>
+        </p>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 8px">OCR · <span data-l="zh">阅读</span><span data-l="en">Reading</span> · <span data-l="zh">间隔复习</span><span data-l="en">Spaced Review</span></p>
+        <p style="font-size:14px;line-height:1.6;margin:0 0 20px;color:var(--color-neutral-700)">
+          <span data-l="zh">设计与开发全程独立完成</span><span data-l="en">Designed &amp; built end-to-end</span>
+        </p>
+        <a href="#work" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)"><span data-l="zh">查看项目 →</span><span data-l="en">View project →</span></a>
+      </div>
+      <img src="../assets/icon-readshot.png" alt="ReadShot" style="width:100%;max-width:340px;height:auto;justify-self:end">
+    </article>
+
+    <article data-r="case" style="display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;padding:0 0 clamp(32px,4vw,48px);border-bottom:2px solid var(--color-divider);margin:0 0 clamp(32px,4vw,48px)">
+      <img src="../assets/icon-sona.png" alt="Sona" style="width:100%;max-width:340px;height:auto">
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">iOS · <span data-l="zh">已上架</span><span data-l="en">Shipped</span></p>
+        <h3 style="font-size:clamp(28px,3.2vw,40px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin:0 0 14px">Sona</h3>
+        <p style="font-size:clamp(17px,1.5vw,20px);line-height:1.55;max-width:34ch;margin:0 0 20px">
+          <span data-l="zh">语言不是背出来的，是用出来的。</span>
+          <span data-l="en">A language gets used into place, not memorised.</span>
+        </p>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 8px"><span data-l="zh">听力</span><span data-l="en">Listening</span> · <span data-l="zh">口语</span><span data-l="en">Speaking</span> · <span data-l="zh">复习循环</span><span data-l="en">Review Loop</span></p>
+        <p style="font-size:14px;line-height:1.6;margin:0 0 20px;color:var(--color-neutral-700)">
+          <span data-l="zh">设计与开发全程独立完成</span><span data-l="en">Designed &amp; built end-to-end</span>
+        </p>
+        <a href="#work" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)"><span data-l="zh">查看项目 →</span><span data-l="en">View project →</span></a>
+      </div>
+    </article>
+
+    <article data-r="case" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(24px,4vw,56px);align-items:start;padding:0 0 clamp(32px,4vw,48px);border-bottom:2px solid var(--color-divider)">
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">macOS / Windows · <span data-l="zh">自用中</span><span data-l="en">In daily use</span></p>
+        <h3 style="font-size:clamp(28px,3.2vw,40px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin:0 0 14px">cleanCut</h3>
+        <p style="font-size:clamp(17px,1.5vw,20px);line-height:1.55;max-width:34ch;margin:0 0 20px">
+          <span data-l="zh">按文字稿剪音频：删字就是删声音。</span>
+          <span data-l="en">Cut audio by transcript — deleting words deletes sound.</span>
+        </p>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 8px"><span data-l="zh">转写</span><span data-l="en">Transcript</span> · <span data-l="zh">重复片段</span><span data-l="en">Duplicate Takes</span> · <span data-l="zh">响度</span><span data-l="en">Loudness</span></p>
+        <p style="font-size:14px;line-height:1.6;margin:0 0 20px;color:var(--color-neutral-700)">
+          <span data-l="zh">为自己录播客而做，现在每期都在用</span><span data-l="en">Built for my own podcast; used on every episode</span>
+        </p>
+        <a href="#work" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)"><span data-l="zh">查看项目 →</span><span data-l="en">View project →</span></a>
+      </div>
+      <figure style="margin:0"><image-slot id="home-cleancut" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/3" placeholder="cleanCut 界面截图"></image-slot></figure>
+    </article>
+
+    <div data-r="two" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin:clamp(48px,6vw,88px) 0 0">
+      <a href="#research" style="display:block;padding-top:24px;border-top:2px solid var(--color-divider)">
+        <h2 style="font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.025em;margin:0 0 12px"><span data-l="zh">量化研究</span><span data-l="en">Quant research</span></h2>
+        <p style="font-size:16px;line-height:1.65;max-width:34ch;margin:0 0 16px;color:var(--color-neutral-700)">
+          <span data-l="zh">市场会换性格，人也会。研究它，多半是在学怎么承认自己看错了。</span>
+          <span data-l="en">Markets change temperament; so do we. Studying them is mostly learning how to admit I was wrong.</span>
+        </p>
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700)"><span data-l="zh">阅读笔记 →</span><span data-l="en">Read the notes →</span></span>
+      </a>
+      <a href="#notes" style="display:block;padding-top:24px;border-top:2px solid var(--color-divider)">
+        <h2 style="font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.025em;margin:0 0 12px"><span data-l="zh">播客与记录</span><span data-l="en">Podcast &amp; notes</span></h2>
+        <p style="font-size:16px;line-height:1.65;max-width:34ch;margin:0 0 16px;color:var(--color-neutral-700)">
+          <span data-l="zh">一个人说的话、写的字、走过的山路。产出不多，但每一样都真的发生过。</span>
+          <span data-l="en">Things said, things written, trails walked. Not a lot of output — but all of it really happened.</span>
+        </p>
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700)"><span data-l="zh">进去看看 →</span><span data-l="en">Have a look →</span></span>
+      </a>
+    </div>
+
+    <div style="margin:clamp(56px,7vw,96px) 0 0;background:var(--color-accent);color:var(--color-bg);padding:clamp(40px,5.5vw,72px) clamp(28px,4.5vw,64px)">
+      <p style="font-family:var(--font-heading),sans-serif;font-size:clamp(28px,4vw,54px);font-weight:800;line-height:1.05;letter-spacing:-.035em;margin:0 0 18px;max-width:20ch">
+        <span data-l="zh">想试的事，先试。</span><span data-l="en">Try the thing first.</span>
+      </p>
+      <p style="font-size:17px;line-height:1.6;max-width:36ch;margin:0 0 24px">
+        <span data-l="zh">最坏的结果也就是出个 Bug——而 Bug 是可以改的，遗憾不太行。</span><span data-l="en">Worst case it's a bug — and bugs can be fixed. Regret is harder.</span>
+      </p>
+      <a href="mailto:hello@example.com" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-bg);border-bottom:2px solid var(--color-bg);padding-bottom:4px"><span data-l="zh">联系我 →</span><span data-l="en">Get in touch →</span></a>
+    </div>
+  </section>
+
+  <section data-page="work">
+    <h1 style="font-size:clamp(34px,4.6vw,60px);font-weight:800;line-height:1.06;letter-spacing:-.035em;margin:0 0 24px;max-width:20ch">
+      <span data-l="zh">每个产品，都是自己从头做完的。</span><span data-l="en">Every product, built start to finish.</span>
+    </h1>
+    <p style="font-size:18px;line-height:1.65;max-width:42ch;margin:0 0 clamp(44px,5.5vw,72px);color:var(--color-neutral-700)">
+      <span data-l="zh">交互、视觉、代码、文案都由一个人决定。多数功能都是先把自己烦到了，才动手写的。</span>
+      <span data-l="en">Interaction, visuals, code and copy all decided by one person. Most features began as something that annoyed me first.</span>
+    </p>
+
+    <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;color:var(--color-neutral-700)">iOS</h2>
+    <hr class="hr" style="margin:0 0 36px">
+
+    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,40px);padding:0 0 32px;border-bottom:2px solid var(--color-divider);margin:0 0 32px">
+      <img src="../assets/icon-readshot.png" alt="ReadShot" style="width:96px;height:96px">
+      <div>
+        <h3 style="font-size:30px;font-weight:800;letter-spacing:-.025em;margin:0 0 10px">ReadShot</h3>
+        <p style="font-size:18px;line-height:1.55;max-width:38ch;margin:0 0 16px"><span data-l="zh">把拍下来的文字，变成真的记得住的东西。</span><span data-l="en">Turn photographed text into something worth remembering.</span></p>
+        <p style="font-size:16px;line-height:1.7;max-width:46ch;margin:0 0 18px;color:var(--color-neutral-700)">
+          <span data-l="zh">取出照片里的文字，帮你读懂，再等一个合适的时候回来找你。记不住的句子，多半只是没有被再看第二眼。</span>
+          <span data-l="en">It lifts the words out of the photo, helps you read them, then brings them back when the time is right. A sentence is usually forgotten only because it never got a second look.</span>
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline">OCR</span><span class="tag tag-outline"><span data-l="zh">复习</span><span data-l="en">Review</span></span></div>
+        <a href="https://github.com" target="_blank" rel="noopener" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)">GitHub →</a>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,40px);padding:0 0 32px;border-bottom:2px solid var(--color-divider);margin:0 0 32px">
+      <img src="../assets/icon-sona.png" alt="Sona" style="width:96px;height:96px">
+      <div>
+        <h3 style="font-size:30px;font-weight:800;letter-spacing:-.025em;margin:0 0 10px">Sona</h3>
+        <p style="font-size:18px;line-height:1.55;max-width:38ch;margin:0 0 16px"><span data-l="zh">语言不是背出来的，是用出来的。</span><span data-l="en">A language gets used into place, not memorised.</span></p>
+        <p style="font-size:16px;line-height:1.7;max-width:46ch;margin:0 0 18px;color:var(--color-neutral-700)">
+          <span data-l="zh">听懂、开口、记下、再来一次。图标里那两个气泡就是这个循环——学一门语言，其实是慢慢敢开口。</span>
+          <span data-l="en">Listen, speak, keep it, come back. The two bubbles in the icon are that loop — learning a language is mostly learning to dare to speak.</span>
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline"><span data-l="zh">语言学习</span><span data-l="en">Language</span></span><span class="tag tag-outline"><span data-l="zh">听说</span><span data-l="en">Speaking</span></span></div>
+        <a href="https://github.com" target="_blank" rel="noopener" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)">GitHub →</a>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,40px);padding:0 0 32px;border-bottom:2px solid var(--color-divider);margin:0 0 32px">
+      <img src="../assets/icon-lexigo.png" alt="Lexigo" style="width:96px;height:96px">
+      <div>
+        <h3 style="font-size:30px;font-weight:800;letter-spacing:-.025em;margin:0 0 10px">Lexigo</h3>
+        <p style="font-size:18px;line-height:1.55;max-width:38ch;margin:0 0 16px"><span data-l="zh">背单词最大的敌人是无聊。</span><span data-l="en">Boredom is what kills vocabulary apps.</span></p>
+        <p style="font-size:16px;line-height:1.7;max-width:46ch;margin:0 0 18px;color:var(--color-neutral-700)">
+          <span data-l="zh">做成一局一局玩得下去的小游戏。能坚持下来的方法，通常不是最有效的那个，而是最不难受的那个。</span>
+          <span data-l="en">Short rounds you'll actually play. The method that lasts is rarely the most efficient one — it's the one that hurts least.</span>
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline"><span data-l="zh">词汇</span><span data-l="en">Vocabulary</span></span></div>
+        <a href="https://github.com" target="_blank" rel="noopener" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)">GitHub →</a>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,40px);padding:0 0 32px;border-bottom:2px solid var(--color-divider)">
+      <span style="display:flex;align-items:center;justify-content:center;width:96px;height:96px;border:2px solid var(--color-divider);font-family:var(--font-heading),sans-serif;font-weight:800;font-size:28px;letter-spacing:-.03em;color:var(--color-neutral-700)">MT</span>
+      <div>
+        <h3 style="font-size:30px;font-weight:800;letter-spacing:-.025em;margin:0 0 10px">MedTime</h3>
+        <p style="font-size:18px;line-height:1.55;max-width:38ch;margin:0 0 16px"><span data-l="zh">给家里人记着几点该吃哪一种药。</span><span data-l="en">Remembers which pill, at what time, for the people at home.</span></p>
+        <p style="font-size:16px;line-height:1.7;max-width:46ch;margin:0 0 18px;color:var(--color-neutral-700)">
+          <span data-l="zh">提醒要足够明显，操作要足够少。替他们记住这些小事，是我能做的那种照顾。</span>
+          <span data-l="en">Loud enough to notice, simple enough to use. Remembering these small things for them is the kind of care I know how to give.</span>
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline"><span data-l="zh">提醒</span><span data-l="en">Reminders</span></span></div>
+        <a href="https://github.com" target="_blank" rel="noopener" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)">GitHub →</a>
+      </div>
+    </article>
+
+    <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:clamp(48px,6vw,80px) 0 4px;color:var(--color-neutral-700)">macOS / Windows</h2>
+    <hr class="hr" style="margin:0 0 36px">
+
+    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,40px);padding:0 0 32px;border-bottom:2px solid var(--color-divider);margin:0 0 32px">
+      <span style="display:flex;align-items:center;justify-content:center;width:96px;height:96px;background:var(--color-surface);font-family:var(--font-heading),sans-serif;font-weight:800;font-size:28px;letter-spacing:-.03em">cC</span>
+      <div>
+        <h3 style="font-size:30px;font-weight:800;letter-spacing:-.025em;margin:0 0 10px">cleanCut</h3>
+        <p style="font-size:18px;line-height:1.55;max-width:38ch;margin:0 0 16px"><span data-l="zh">按文字稿剪音频：删字就是删声音。</span><span data-l="en">Cut audio by transcript — deleting words deletes sound.</span></p>
+        <p style="font-size:16px;line-height:1.7;max-width:46ch;margin:0 0 18px;color:var(--color-neutral-700)">
+          <span data-l="zh">同一句录了五遍，它把五个版本并排放好，留一个就行。剪掉的那些停顿和口癖，其实也是说话的一部分——只是不必都留给听众。</span>
+          <span data-l="en">Say a line five times and it lays the five takes side by side; keep one. The pauses and fillers it removes are part of speaking too — they just don't all need an audience.</span>
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px"><span class="tag tag-accent">macOS</span><span class="tag tag-accent">Windows</span><span class="tag tag-outline"><span data-l="zh">自用中</span><span data-l="en">In daily use</span></span></div>
+        <a href="https://github.com" target="_blank" rel="noopener" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)">GitHub →</a>
+        <figure style="margin:24px 0 0;max-width:560px"><image-slot id="work-cleancut" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/10" placeholder="cleanCut 界面截图"></image-slot></figure>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,40px)">
+      <span style="display:flex;align-items:center;justify-content:center;width:96px;height:96px;border:2px solid var(--color-divider);font-family:var(--font-heading),sans-serif;font-weight:800;font-size:28px;letter-spacing:-.03em">aS</span>
+      <div>
+        <h3 style="font-size:30px;font-weight:800;letter-spacing:-.025em;margin:0 0 10px">attentionStudio</h3>
+        <p style="font-size:18px;line-height:1.55;max-width:38ch;margin:0 0 16px"><span data-l="zh">一条视频，最终是由注意力生成的。</span><span data-l="en">A video is ultimately generated out of attention.</span></p>
+        <p style="font-size:16px;line-height:1.7;max-width:46ch;margin:0 0 18px;color:var(--color-neutral-700)">
+          <span data-l="zh">所以它管理的不是文件，是注意力落下的地方：每镜一条 prompt，版本并排，生成结果挂在对应版本下。看清自己怎么想的，比留住成品更要紧。</span>
+          <span data-l="en">So it keeps track of where attention lands, not files: one prompt per shot, revisions side by side, outputs attached to the version that made them. Seeing how you thought matters more than keeping what you made.</span>
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px"><span class="tag tag-accent">macOS</span><span class="tag tag-accent">Windows</span><span class="tag tag-outline"><span data-l="zh">开发中</span><span data-l="en">In progress</span></span></div>
+        <a href="https://github.com" target="_blank" rel="noopener" style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)">GitHub →</a>
+        <figure style="margin:24px 0 0;max-width:560px"><image-slot id="work-prompt" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/10" placeholder="attentionStudio 界面截图"></image-slot></figure>
+      </div>
+    </article>
+  </section>
+
+  <section data-page="research">
+    <h1 style="font-size:clamp(34px,4.6vw,60px);font-weight:800;line-height:1.06;letter-spacing:-.035em;margin:0 0 24px;max-width:18ch">
+      <span data-l="zh">先想办法证伪，再谈信心。</span><span data-l="en">Try to break it first.</span>
+    </h1>
+    <p style="font-size:18px;line-height:1.65;max-width:42ch;margin:0 0 clamp(44px,5.5vw,72px);color:var(--color-neutral-700)">
+      <span data-l="zh">只写方法，不放收益数字，也不构成建议。写下来是为了提醒自己：确定感往往比错误更贵。</span>
+      <span data-l="en">Method only — no performance numbers, no advice. I write it down to remind myself that certainty costs more than being wrong.</span>
+    </p>
+
+    <div style="border-top:2px solid var(--color-divider)">
+      <article style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,48px);padding:36px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--color-accent)">01</span>
+        <div>
+          <h2 style="font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;margin:0 0 14px"><span data-l="zh">先承认市场会换性格</span><span data-l="en">The market changes personality</span></h2>
+          <p style="font-size:17px;line-height:1.7;max-width:48ch;margin:0;color:var(--color-neutral-700)">
+            <span data-l="zh">用隐马尔可夫把行情切成几个状态，不是为了预测下一根 K 线，而是判断「现在这套逻辑还适用吗」。状态判错的代价，往往比信号弱一点更贵。</span>
+            <span data-l="en">A hidden Markov model cuts the tape into regimes — not to predict the next candle, but to ask whether the logic I'm running still applies. Misreading the regime usually costs more than a weak signal does.</span>
+          </p>
+        </div>
+      </article>
+      <article style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,48px);padding:36px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--color-accent)">02</span>
+        <div>
+          <h2 style="font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;margin:0 0 14px"><span data-l="zh">动量与回归之间那条线</span><span data-l="en">Where momentum becomes reversal</span></h2>
+          <p style="font-size:17px;line-height:1.7;max-width:48ch;margin:0;color:var(--color-neutral-700)">
+            <span data-l="zh">同一个信号，换个时间尺度就换个方向。短周期像回归，长周期像动量，中间那段最贵。大部分工作就是反复量这条线在哪。</span>
+            <span data-l="en">The same signal flips sign when the horizon changes: short looks like reversal, long looks like momentum, and the middle is expensive. Most of the work is measuring where that line sits.</span>
+          </p>
+        </div>
+      </article>
+      <article style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,48px);padding:36px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--color-accent)">03</span>
+        <div>
+          <h2 style="font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;margin:0 0 14px"><span data-l="zh">一个想法怎么走完流程</span><span data-l="en">How an idea gets tested</span></h2>
+          <p style="font-size:17px;line-height:1.7;max-width:48ch;margin:0 0 14px;color:var(--color-neutral-700)">
+            <span data-l="zh">假设 → 构造 → 分层检验 → 加上成本和容量 → 小仓位跟一段。任何一步说不通就归档。</span>
+            <span data-l="en">Hypothesis, construction, quantile test, costs and capacity, then small-size tracking. If any step doesn't hold up, it gets archived.</span>
+          </p>
+          <p style="font-size:16px;line-height:1.7;max-width:48ch;margin:0;color:var(--color-neutral-700)">
+            <span data-l="zh">归档的想法比留下的多得多，我现在觉得这挺好——大部分工作，本来就是学着放手。</span>
+            <span data-l="en">Far more ideas get archived than kept, and I've come to like that — most of the work is learning to let go.</span>
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section data-page="notes">
+    <h1 style="font-size:clamp(34px,4.6vw,60px);font-weight:800;line-height:1.06;letter-spacing:-.035em;margin:0 0 24px;max-width:18ch">
+      <span data-l="zh">说出来、写下来，才算想清楚。</span><span data-l="en">If I can't say it or write it, I haven't understood it.</span>
+    </h1>
+    <p style="font-size:18px;line-height:1.65;max-width:42ch;margin:0 0 clamp(44px,5.5vw,72px);color:var(--color-neutral-700)">
+      <span data-l="zh">一档播客、几篇长文、几首笨拙的英文小诗，还有山路上的照片。慢的那部分生活，都在这里。</span>
+      <span data-l="en">A podcast, a few essays, a few clumsy poems in English, photographs from the trail — the slower half of a life.</span>
+    </p>
+
+    <div data-r="two" style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start;padding:0 0 clamp(40px,5vw,64px);border-bottom:2px solid var(--color-divider)">
+      <img src="../assets/podcast-cover.png" alt="" style="width:100%;height:auto">
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px"><span data-l="zh">播客</span><span data-l="en">Podcast</span></p>
+        <h2 style="font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin:0 0 16px"><span data-l="zh">大不了就出个 Bug</span><span data-l="en">Worst Case, a Bug</span></h2>
+        <p style="font-size:17px;line-height:1.7;max-width:44ch;margin:0 0 16px;color:var(--color-neutral-700)">
+          <span data-l="zh">一个人录的节目，聊语言、关系、生活和远方。讲的都是真的试过之后才敢说的话，包括试错的那部分。</span>
+          <span data-l="en">A one-person show about language, people, living and going far — only things I've tried before saying them out loud, the failures included.</span>
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 28px">
+          <a class="btn btn-primary" href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener"><span data-l="zh">收听（全平台）</span><span data-l="en">Listen (all platforms)</span></a>
+        </div>
+        <div style="border-top:2px solid var(--color-divider)">
+          <a href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:baseline;padding:18px 0;border-bottom:2px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.08em;color:var(--color-accent)">EP 03</span>
+            <span><span style="display:block;font-weight:600;font-size:18px;letter-spacing:-.01em"><span data-l="zh">标题待补</span><span data-l="en">Title to come</span></span></span>
+          </a>
+          <a href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:baseline;padding:18px 0;border-bottom:2px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.08em;color:var(--color-accent)">EP 02</span>
+            <span><span style="display:block;font-weight:600;font-size:18px;letter-spacing:-.01em"><span data-l="zh">标题待补</span><span data-l="en">Title to come</span></span></span>
+          </a>
+          <a href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:baseline;padding:18px 0;border-bottom:2px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.08em;color:var(--color-accent)">EP 01</span>
+            <span><span style="display:block;font-weight:600;font-size:18px;letter-spacing:-.01em"><span data-l="zh">标题待补</span><span data-l="en">Title to come</span></span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:clamp(48px,6vw,80px) 0 4px;color:var(--color-neutral-700)"><span data-l="zh">长文</span><span data-l="en">Essays</span></h2>
+    <hr class="hr" style="margin:0 0 8px">
+    <div>
+      <a href="#notes" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);padding:26px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--color-neutral-700)">2026.09</span>
+        <span>
+          <span style="display:block;font-weight:800;font-family:var(--font-heading),sans-serif;font-size:22px;letter-spacing:-.02em;margin-bottom:8px"><span data-l="zh">文章标题待补</span><span data-l="en">Article title to come</span></span>
+          <span style="display:block;font-size:16px;line-height:1.65;max-width:48ch;color:var(--color-neutral-700)"><span data-l="zh">两三句摘要放这里。</span><span data-l="en">Two or three lines of summary go here.</span></span>
+        </span>
+      </a>
+      <a href="#notes" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);padding:26px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--color-neutral-700)">2026.08</span>
+        <span>
+          <span style="display:block;font-weight:800;font-family:var(--font-heading),sans-serif;font-size:22px;letter-spacing:-.02em;margin-bottom:8px"><span data-l="zh">文章标题待补</span><span data-l="en">Article title to come</span></span>
+          <span style="display:block;font-size:16px;line-height:1.65;max-width:48ch;color:var(--color-neutral-700)"><span data-l="zh">两三句摘要放这里。</span><span data-l="en">Two or three lines of summary go here.</span></span>
+        </span>
+      </a>
+    </div>
+
+    <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:clamp(48px,6vw,80px) 0 4px;color:var(--color-neutral-700)"><span data-l="zh">英文小诗</span><span data-l="en">Poems</span></h2>
+    <hr class="hr" style="margin:0 0 clamp(32px,4vw,52px)">
+    <div style="max-width:54ch">
+      <article style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;padding:0 0 clamp(40px,5vw,64px);border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;line-height:2.4;color:var(--color-accent)">I</span>
+        <div>
+          <h3 style="font-size:clamp(24px,2.6vw,32px);font-weight:800;line-height:1.12;letter-spacing:-.025em;margin:0 0 8px">Rings of Time and Light</h3>
+          <p style="font-family:var(--font-heading),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 32px">Muir Woods · 2026</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">Sunlight falls<br>through a thousand years of leaves,<br>waving a soft mist in the air.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">I lift my head<br>and see the sharp edge of light,<br>cutting through silence.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">In the slow breeze of time,<br>the redwood stands—<br>its trunk laid open,<br>rings unfolding<br>like quiet stories.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">Eighty—<br>the world begins to count.<br>One hundred and five—<br>paper is born in the East,<br>hands shaping words<br>from pulp and fiber.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">And still,<br>this tree was only learning<br>how to reach the sky.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">Now their paths meet—<br>ink and green,<br>salt and root.<br>I trace the lines in the wood,<br>feeling the pulse of centuries.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0">Time does not pass.<br>It rests,<br>softly kept<br>by the forest.</p>
+        </div>
+      </article>
+      <article style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;padding:clamp(40px,5vw,64px) 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:13px;line-height:2.4;color:var(--color-accent)">II</span>
+        <div>
+          <h3 style="font-size:clamp(24px,2.6vw,32px);font-weight:800;line-height:1.12;letter-spacing:-.025em;margin:0 0 8px">Mooncake Waiting</h3>
+          <p style="font-family:var(--font-heading),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 32px">Mid-Autumn · 2026</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">The moon was full, but I was not home.<br>Mid-Autumn came and went<br>through phone calls<br>that ended too soon,<br>through promises<br>that stretched too far.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">You had already saved one for me—<br>a mooncake, round and patient,<br>resting quietly on the table.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">From that night on, it stayed there,<br>watching seasons shift,<br>counting footsteps that never came.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">When I finally returned,<br>the air had turned cool.<br>You were sitting by the door,<br>as if time had decided to wait with you.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">You did not ask why.<br>You only smiled,<br>and placed the mooncake<br>into my hands.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">It felt lighter—<br>as though something inside<br>had already faded.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">Only then I saw<br>the soft bloom of mold,<br>spreading like a forgotten story<br>across its surface.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px">I wanted to speak,<br>but the silence<br>knew me better.</p>
+          <p style="font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0">So I held it there—<br>that once-perfect circle—<br>and understood<br>how long love can wait without being seen.</p>
+        </div>
+      </article>
+    </div>
+
+    <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-neutral-700);margin:clamp(48px,6vw,80px) 0 0;padding-top:24px;border-top:2px solid var(--color-divider)">
+      <span data-l="zh">山路、旅行和读过的书，都搬到了 </span><span data-l="en">Trails, travel and books have moved to </span><a href="#life" style="color:var(--color-accent-700);border-bottom:2px solid var(--color-accent-200)"><span data-l="zh">生活 →</span><span data-l="en">Life →</span></a>
+    </p>
+  </section>
+
+  <section data-page="life">
+    <h1 style="font-size:clamp(34px,4.6vw,60px);font-weight:800;line-height:1.06;letter-spacing:-.035em;margin:0 0 24px;max-width:18ch">
+      <span data-l="zh">不产出任何东西的时间。</span><span data-l="en">Time that produces nothing.</span>
+    </h1>
+    <p style="font-size:18px;line-height:1.65;max-width:42ch;margin:0 0 clamp(44px,5.5vw,72px);color:var(--color-neutral-700)">
+      <span data-l="zh">做产品之外的那一半：走过的山路、住过几天的城市、读到一半的书。这一页没有交付物，也不打算有。</span>
+      <span data-l="en">The other half, the one that ships nothing: trails walked, cities slept in, books left half-read. Nothing on this page is a deliverable.</span>
+    </p>
+
+    <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;color:var(--color-neutral-700)"><span data-l="zh">日常</span><span data-l="en">Everyday</span></h2>
+    <hr class="hr" style="margin:0 0 clamp(24px,3vw,36px)">
+    <div data-r="three" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin:0 0 clamp(52px,6.5vw,88px)">
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin:0 0 10px">01</p>
+        <p style="font-size:17px;line-height:1.6;margin:0 0 6px;font-weight:600"><span data-l="zh">走路</span><span data-l="en">Walking</span></p>
+        <p style="font-size:15px;line-height:1.65;margin:0;color:var(--color-neutral-700)"><span data-l="zh">想不清楚的问题，走两公里通常就清楚了。</span><span data-l="en">Two kilometres usually settles whatever I can't think through sitting down.</span></p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin:0 0 10px">02</p>
+        <p style="font-size:17px;line-height:1.6;margin:0 0 6px;font-weight:600"><span data-l="zh">做饭</span><span data-l="en">Cooking</span></p>
+        <p style="font-size:15px;line-height:1.65;margin:0;color:var(--color-neutral-700)"><span data-l="zh">难得有一件事，四十分钟就有确定的结果。</span><span data-l="en">Rare to have something that gives a definite result in forty minutes.</span></p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin:0 0 10px">03</p>
+        <p style="font-size:17px;line-height:1.6;margin:0 0 6px;font-weight:600"><span data-l="zh">拍照</span><span data-l="en">Photographs</span></p>
+        <p style="font-size:15px;line-height:1.65;margin:0;color:var(--color-neutral-700)"><span data-l="zh">拍得不好也拍，为的是再看一眼。</span><span data-l="en">I shoot badly on purpose — the point is looking twice.</span></p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin:0 0 10px">04</p>
+        <p style="font-size:17px;line-height:1.6;margin:0 0 6px;font-weight:600"><span data-l="zh">发呆</span><span data-l="en">Doing nothing</span></p>
+        <p style="font-size:15px;line-height:1.65;margin:0;color:var(--color-neutral-700)"><span data-l="zh">效率的反面，不是浪费。</span><span data-l="en">The opposite of efficiency isn't waste.</span></p>
+      </div>
+    </div>
+
+    <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;color:var(--color-neutral-700)"><span data-l="zh">户外与旅行</span><span data-l="en">Outdoors &amp; travel</span></h2>
+    <hr class="hr" style="margin:0 0 clamp(28px,3.5vw,44px)">
+    <p style="font-size:18px;line-height:1.65;max-width:40ch;margin:0 0 clamp(28px,3.5vw,44px);color:var(--color-neutral-700)">
+      <span data-l="zh">山不会记得你来过，但你会。</span>
+      <span data-l="en">The mountain won't remember you came — but you will.</span>
+    </p>
+
+    <article data-r="case" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:clamp(24px,4vw,56px);align-items:start;padding:0 0 clamp(32px,4vw,48px);border-bottom:2px solid var(--color-divider);margin:0 0 clamp(32px,4vw,48px)">
+      <div>
+        <p style="font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">California · 2026</p>
+        <h3 style="font-size:clamp(26px,3vw,36px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin:0 0 14px">Muir Woods</h3>
+        <p style="font-size:17px;line-height:1.7;max-width:40ch;margin:0;color:var(--color-neutral-700)">
+          <span data-l="zh">一千年的树下面，人走得很慢。那天回去写了一首诗，是这一页里唯一有产出的时刻。</span>
+          <span data-l="en">Under thousand-year trees people walk slowly. I wrote a poem afterwards — the only thing on this page that produced anything.</span>
+        </p>
+        <a href="#notes" style="display:inline-block;margin-top:18px;font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)"><span data-l="zh">读那首诗 →</span><span data-l="en">Read the poem →</span></a>
+      </div>
+      <figure style="margin:0"><image-slot id="life-muir" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/3" placeholder="Muir Woods 照片"></image-slot></figure>
+    </article>
+
+    <div data-r="three" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin:0 0 clamp(20px,2.5vw,32px)">
+      <figure style="margin:0">
+        <image-slot id="life-trail-1" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="山路照片 1"></image-slot>
+        <figcaption style="margin-top:10px;font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-l="zh">地点 · 时间待补</span><span data-l="en">Place · date to come</span></figcaption>
+      </figure>
+      <figure style="margin:0">
+        <image-slot id="life-trail-2" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="山路照片 2"></image-slot>
+        <figcaption style="margin-top:10px;font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-l="zh">地点 · 时间待补</span><span data-l="en">Place · date to come</span></figcaption>
+      </figure>
+      <figure style="margin:0">
+        <image-slot id="life-trail-3" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="旅行照片 3"></image-slot>
+        <figcaption style="margin-top:10px;font-family:var(--font-heading),sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-l="zh">地点 · 时间待补</span><span data-l="en">Place · date to come</span></figcaption>
+      </figure>
+    </div>
+
+    <h2 style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:clamp(52px,6.5vw,88px) 0 4px;color:var(--color-neutral-700)"><span data-l="zh">图书馆</span><span data-l="en">Library</span></h2>
+    <hr class="hr" style="margin:0 0 clamp(28px,3.5vw,44px)">
+    <p style="font-size:18px;line-height:1.65;max-width:42ch;margin:0 0 clamp(28px,3.5vw,44px);color:var(--color-neutral-700)">
+      <span data-l="zh">不是书单，是账本：读过的、在读的、放弃的都记着。放弃也算一种读法。</span>
+      <span data-l="en">Not a reading list, a ledger: finished, reading, abandoned. Abandoning counts as a way of reading.</span>
+    </p>
+    <div style="border-top:2px solid var(--color-divider)">
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(18px,3vw,40px);align-items:baseline;padding:22px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;color:var(--color-accent)">01</span>
+        <span>
+          <span style="display:block;font-family:var(--font-heading),sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;margin-bottom:6px"><span data-l="zh">书名待补</span><span data-l="en">Title to come</span></span>
+          <span style="display:block;font-size:15px;line-height:1.65;max-width:46ch;color:var(--color-neutral-700)"><span data-l="zh">作者 · 一句话：它改了我哪个想法。</span><span data-l="en">Author · one line: which idea of mine it changed.</span></span>
+        </span>
+        <span class="tag tag-accent"><span data-l="zh">在读</span><span data-l="en">Reading</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(18px,3vw,40px);align-items:baseline;padding:22px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;color:var(--color-accent)">02</span>
+        <span>
+          <span style="display:block;font-family:var(--font-heading),sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;margin-bottom:6px"><span data-l="zh">书名待补</span><span data-l="en">Title to come</span></span>
+          <span style="display:block;font-size:15px;line-height:1.65;max-width:46ch;color:var(--color-neutral-700)"><span data-l="zh">作者 · 一句话：它改了我哪个想法。</span><span data-l="en">Author · one line: which idea of mine it changed.</span></span>
+        </span>
+        <span class="tag tag-outline"><span data-l="zh">读完</span><span data-l="en">Finished</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(18px,3vw,40px);align-items:baseline;padding:22px 0;border-bottom:2px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;color:var(--color-accent)">03</span>
+        <span>
+          <span style="display:block;font-family:var(--font-heading),sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;margin-bottom:6px"><span data-l="zh">书名待补</span><span data-l="en">Title to come</span></span>
+          <span style="display:block;font-size:15px;line-height:1.65;max-width:46ch;color:var(--color-neutral-700)"><span data-l="zh">作者 · 一句话：读到一半为什么放下。</span><span data-l="en">Author · one line: why I put it down halfway.</span></span>
+        </span>
+        <span class="tag tag-neutral"><span data-l="zh">放弃</span><span data-l="en">Abandoned</span></span>
+      </div>
+    </div>
+    <p style="font-size:15px;line-height:1.7;max-width:40ch;margin:24px 0 0;color:var(--color-neutral-700)">
+      <span data-l="zh">这份清单会慢慢长——读得慢是特点，不是缺点。</span>
+      <span data-l="en">The list grows slowly. Reading slowly is a feature.</span>
+    </p>
+  </section>
+
+  <section data-page="about">
+    <div data-r="two" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(32px,5vw,72px);align-items:start">
+      <div>
+        <h1 style="font-size:clamp(34px,4.6vw,60px);font-weight:800;line-height:1.06;letter-spacing:-.035em;margin:0 0 24px;max-width:18ch">
+          <span data-l="zh">程序员，独立开发者。</span><span data-l="en">Programmer, indie developer.</span>
+        </h1>
+        <p style="font-size:18px;line-height:1.7;max-width:44ch;margin:0 0 20px;color:var(--color-neutral-700)">
+          <span data-l="zh">白天做 App，夜里研究策略，周末录播客、往山里走。名字的意思很简单：想做的事先做，做坏了大不了就出个 Bug——Bug 能改，没试过的事不好交代。</span>
+          <span data-l="en">Apps by day, strategies at night, podcast and mountains on weekends. The name says it: do the thing — worst case it's a bug, and bugs get fixed. Things never tried are harder to explain.</span>
+        </p>
+        <div style="margin:clamp(32px,4vw,48px) 0 0;border-top:2px solid var(--color-divider)">
+          <div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px;padding:18px 0;border-bottom:2px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;color:var(--color-neutral-700)">NOW</span>
+            <span style="font-size:17px;line-height:1.6"><span data-l="zh">独立开发 App、做桌面工具、录播客</span><span data-l="en">Shipping apps, building desktop tools, podcasting</span></span>
+          </div>
+          <div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px;padding:18px 0;border-bottom:2px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;color:var(--color-neutral-700)">BEFORE</span>
+            <span style="font-size:17px;line-height:1.6"><span data-l="zh">这一行换成你的工作经历</span><span data-l="en">Replace this line with your work history</span></span>
+          </div>
+          <div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px;padding:18px 0;border-bottom:2px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading),sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;color:var(--color-neutral-700)">TOOLS</span>
+            <span style="font-size:17px;line-height:1.6">Swift · SwiftUI · Python · Figma</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(32px,4vw,48px)">
+          <a class="btn btn-primary" href="mailto:hello@example.com"><span data-l="zh">写信给我</span><span data-l="en">Email me</span></a>
+          <a class="btn btn-secondary" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <figure style="margin:0"><image-slot id="about-portrait" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="放一张你的照片"></image-slot></figure>
+    </div>
+  </section>
+
+  <footer style="margin-top:clamp(56px,7vw,96px);padding-top:24px;border-top:2px solid var(--color-divider);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--color-neutral-700)">
+    <span data-l="zh">© 2026 大不了就出个 Bug</span>
+    <span data-l="en">© 2026 Worst Case, a Bug</span>
+  </footer>
+</main>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const ROUTES = ["home","work","research","notes","life","about"];
+
+class Component extends DCLogic {
+  state = { lang: "zh" };
+
+  componentDidMount() {
+    this.syncRoute();
+    this._onHash = () => this.syncRoute();
+    window.addEventListener("hashchange", this._onHash);
+    let saved = null;
+    try { saved = localStorage.getItem("wcab-lang"); } catch (e) {}
+    const lang = saved === "en" ? "en" : "zh";
+    document.documentElement.setAttribute("data-lang", lang);
+    if (lang !== this.state.lang) this.setState({ lang });
+  }
+
+  componentWillUnmount() {
+    if (this._onHash) window.removeEventListener("hashchange", this._onHash);
+  }
+
+  syncRoute() {
+    const h = (location.hash || "").replace("#", "");
+    const current = document.documentElement.getAttribute("data-route");
+    if (!h && current) return;
+    const route = ROUTES.indexOf(h) >= 0 ? h : current || "home";
+    document.documentElement.setAttribute("data-route", route);
+    window.scrollTo(0, 0);
+  }
+
+  renderVals() {
+    const zh = this.state.lang === "zh";
+    return {
+      langLabel: zh ? "EN" : "中文",
+      toggleLang: () => {
+        const next = zh ? "en" : "zh";
+        document.documentElement.setAttribute("data-lang", next);
+        try { localStorage.setItem("wcab-lang", next); } catch (e) {}
+        this.setState({ lang: next });
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
