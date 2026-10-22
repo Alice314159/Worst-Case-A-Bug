@@ -1,83 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/support.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Solo-built products, quant research, a podcast, and field notes on life.">
+  <link rel="alternate" type="application/rss+xml" title="大不了就出个 Bug · Podcast" href="https://feed.firstory.me/rss/user/cmq5jhwm702rk01zl3m029l0a">
+  <title>Worst Case, a Bug</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
+  <script src="js/podcast-data.js" defer></script>
+  <script src="js/podcast.js" defer></script>
+  <script src="js/image-slot.js" defer></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="_ds/modernist-a62dee29-991e-40be-999a-a516efac0dee/styles.css">
-  <script src="_ds/modernist-a62dee29-991e-40be-999a-a516efac0dee/_ds_bundle.js"></script>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
-  <script src="js/image-slot.js"></script>
-  <style>
-    :root { --color-bg:#ffffff; --color-surface:#f5f7fa; }
-    body { margin:0; background:#ffffff; color:#171c26; text-wrap:pretty; -webkit-font-smoothing:antialiased;
-      font-family:"Archivo","Noto Sans SC",system-ui,sans-serif; }
-    h1,h2,h3,h4 { font-family:"Archivo","Noto Sans SC",system-ui,sans-serif; font-weight:500; letter-spacing:-.025em; }
-    h3,h4 { font-weight:600; letter-spacing:-.015em; }
-    a { color:#1e429f; text-decoration:none; }
-    a:hover { color:#2a5bd7; }
-    /* two copy sets live in the HTML; the toggle flips one attribute */
-    [data-l="en"] { display:none; }
-    html[data-lang="en"] [data-l="zh"] { display:none; }
-    html[data-lang="en"] [data-l="en"] { display:revert; }
-    /* one page visible at a time — the hash is the route */
-    [data-page] { display:none; }
-    html[data-route="home"] [data-page="home"],
-    html[data-route="products"] [data-page="products"],
-    html[data-route="quant"] [data-page="quant"],
-    html[data-route="podcast"] [data-page="podcast"],
-    html[data-route="writing"] [data-page="writing"],
-    html[data-route="life"] [data-page="life"],
-    html[data-route="poems"] [data-page="poems"],
-    html[data-route="video"] [data-page="video"],
-    html[data-route="about"] [data-page="about"] { display:block; }
-    html:not([data-route]) [data-page="home"] { display:block; }
-    /* sidebar current item */
-    [data-nav] { border-left:2px solid transparent; transition:background .15s ease, color .15s ease; }
-    [data-nav]:hover { background:rgba(42,91,215,.06); }
-    html[data-route="home"] [data-nav="home"],
-    html[data-route="products"] [data-nav="products"],
-    html[data-route="quant"] [data-nav="quant"],
-    html[data-route="podcast"] [data-nav="podcast"],
-    html[data-route="writing"] [data-nav="writing"],
-    html[data-route="life"] [data-nav="life"],
-    html[data-route="poems"] [data-nav="poems"],
-    html[data-route="video"] [data-nav="video"],
-    html[data-route="about"] [data-nav="about"],
-    html:not([data-route]) [data-nav="home"] {
-      border-left-color:#2a5bd7; background:rgba(42,91,215,.09); color:#1e429f;
-    }
-    @media (max-width: 980px) {
-      [data-sidebar] { position:static !important; width:auto !important; height:auto !important;
-        border-right:0 !important; border-bottom:1px solid rgba(23,28,38,.13) !important; }
-      [data-sidebar] nav { flex-direction:row !important; overflow-x:auto; }
-      [data-nav] { border-left:0 !important; border-bottom:3px solid transparent; white-space:nowrap; }
-      html[data-route="products"] [data-nav="products"], html[data-route="home"] [data-nav="home"],
-      html[data-route="quant"] [data-nav="quant"],
-      html[data-route="podcast"] [data-nav="podcast"], html[data-route="writing"] [data-nav="writing"],
-      html[data-route="poems"] [data-nav="poems"], html[data-route="video"] [data-nav="video"],
-      html[data-route="life"] [data-nav="life"], html[data-route="about"] [data-nav="about"],
-      html:not([data-route]) [data-nav="home"] { border-bottom-color:#2a5bd7; }
-      [data-main] { margin-left:0 !important; }
-      [data-sidebar] [data-side-foot] { display:none !important; }
-      [data-sidebar] nav > span { display:none !important; }
-      [data-sidebar] { height:auto !important; overflow:visible !important; }
-    }
-    @media (max-width: 760px) {
-      [data-r="split"] { grid-template-columns:1fr !important; }
-      [data-r="cards"] { grid-template-columns:1fr !important; }
-      [data-r="grid3"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
-    }
-  </style>
-</helmet>
-
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ffffff"/><rect x="30" y="30" width="40" height="40" fill="#2a5bd7"/><text x="50" y="60" font-family="Archivo,sans-serif" font-size="26" font-weight="800" fill="#ffffff" text-anchor="middle">B</text></svg></template>
+<a class="skip-link" href="#main-content"><span data-l="zh">跳到正文</span><span data-l="en">Skip to content</span></a>
 <aside data-sidebar style="position:fixed;top:0;left:0;width:264px;height:100vh;overflow-y:auto;display:flex;flex-direction:column;background:#f5f7fa;border-right:1px solid rgba(23,28,38,.13);z-index:20">
   <div style="display:flex;align-items:center;gap:10px;padding:16px 14px 16px 20px;border-bottom:1px solid rgba(23,28,38,.13)">
     <a href="#home" style="display:flex;align-items:center;gap:12px;color:#171c26;min-width:0">
@@ -86,13 +26,12 @@
         <span data-l="zh">大不了<br>就出个 Bug</span><span data-l="en">Worst Case,<br>a Bug</span>
       </span>
     </a>
-    <button type="button" onClick="{{ toggleMusic }}" title="{{ musicLabel }}" aria-label="{{ musicLabel }}" style="margin-left:auto;flex:none;display:flex;align-items:center;justify-content:center;width:32px;height:32px;cursor:pointer;background:transparent;border:1px solid rgba(23,28,38,.22);font-size:12px;line-height:1;color:#171c26;opacity:{{ musicOpacity }}">{{ musicGlyph }}</button>
-    <button type="button" onClick="{{ toggleLang }}" style="flex:none;cursor:pointer;background:transparent;border:1px solid rgba(23,28,38,.22);padding:6px 10px;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;color:#171c26">{{ langLabel }}</button>
+    <button type="button" data-lang-toggle aria-label="Switch to Chinese" style="flex:none;cursor:pointer;background:transparent;border:1px solid rgba(23,28,38,.22);padding:6px 10px;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;color:#171c26">中文</button>
   </div>
-  <nav style="display:flex;flex-direction:column;padding:10px 0 14px;font-size:14px;font-weight:500;letter-spacing:0">
+  <nav aria-label="Main navigation" style="display:flex;flex-direction:column;padding:10px 0 14px;font-size:14px;font-weight:500;letter-spacing:0">
     <a data-nav="home" href="#home" style="padding:10px 20px;color:#171c26"><span data-l="zh">开场</span><span data-l="en">Start here</span></a>
     <span style="padding:16px 20px 6px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(23,28,38,.42)"><span data-l="zh">在做的</span><span data-l="en">Making</span></span>
-    <a data-nav="products" href="projects/" style="padding:10px 20px;color:#171c26"><span data-l="zh">产品</span><span data-l="en">Products</span></a>
+    <a data-nav="products" href="#products" style="padding:10px 20px;color:#171c26"><span data-l="zh">产品</span><span data-l="en">Products</span></a>
     <a data-nav="quant" href="#quant" style="padding:10px 20px;color:#171c26"><span data-l="zh">量化笔记</span><span data-l="en">Quant notes</span></a>
     <a data-nav="podcast" href="#podcast" style="padding:10px 20px;color:#171c26"><span data-l="zh">播客</span><span data-l="en">Podcast</span></a>
     <a data-nav="video" href="#video" style="padding:10px 20px;color:#171c26"><span data-l="zh">视频</span><span data-l="en">Video</span></a>
@@ -101,22 +40,21 @@
     <a data-nav="poems" href="#poems" style="padding:10px 20px;color:#171c26"><span data-l="zh">英文小诗</span><span data-l="en">Poems</span></a>
     <a data-nav="life" href="#life" style="padding:10px 20px;color:#171c26"><span data-l="zh">山路与旅行</span><span data-l="en">Trails &amp; travel</span></a>
     <span style="padding:16px 20px 6px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(23,28,38,.42)"><span data-l="zh">我</span><span data-l="en">Me</span></span>
-    <a data-nav="about" href="about/" style="padding:10px 20px;color:#171c26"><span data-l="zh">关于我</span><span data-l="en">About</span></a>
+    <a data-nav="about" href="#about" style="padding:10px 20px;color:#171c26"><span data-l="zh">关于我</span><span data-l="en">About</span></a>
   </nav>
   <div data-side-foot style="margin-top:auto;padding:18px 20px;border-top:1px solid rgba(23,28,38,.13);display:flex;flex-direction:column;gap:12px">
     <p style="margin:0;font-size:12px;line-height:1.6;color:rgba(23,28,38,.55)">
       <span data-l="zh">随手记录，慢慢补全。</span><span data-l="en">Written slowly, still growing.</span>
     </p>
   </div>
-  <audio id="ambient" src="assets/ambient.mp3" loop preload="none"></audio>
 </aside>
 
-<main data-main style="margin-left:264px;min-height:100vh">
+<main id="main-content" tabindex="-1" data-main style="margin-left:264px;min-height:100vh">
 <div style="max-width:1040px;padding:clamp(40px,6vw,88px) clamp(20px,5vw,72px) 112px">
 
-  <section data-page="home">
+  <section id="home" data-page="home">
     <div style="display:flex;align-items:center;gap:18px;margin:0 0 26px">
-      <img src="assets/podcast-cover.png" alt="" style="width:88px;height:88px;border-radius:50%;transition:transform .2s ease" style-hover="transform:scale(1.04)">
+      <img src="assets/podcast-cover.png" alt="" style="width:88px;height:88px;border-radius:50%;transition:transform .2s ease" data-hover>
       <span style="display:inline-flex;align-items:center;background:rgba(42,91,215,.08);color:#1e429f;padding:7px 12px;font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase">
         <span data-l="zh">还在更新</span><span data-l="en">Still shipping</span>
       </span>
@@ -134,7 +72,7 @@
     </p>
 
     <div style="border-top:1px solid rgba(23,28,38,.13)">
-      <a href="projects/" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" style-hover="background:#fafbfd;padding-left:10px">
+      <a href="#products" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" data-hover>
         <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(42,91,215,.08);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em">01</span>
         <span>
           <span style="display:block;font-weight:600;font-size:19px;letter-spacing:-.015em;margin-bottom:4px"><span data-l="zh">产品</span><span data-l="en">Products</span></span>
@@ -142,7 +80,7 @@
         </span>
         <span style="font-family:Archivo,sans-serif;font-size:17px;font-weight:400;color:rgba(23,28,38,.3)">→</span>
       </a>
-      <a href="#quant" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" style-hover="background:#fafbfd;padding-left:10px">
+      <a href="#quant" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" data-hover>
         <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(42,91,215,.08);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em">02</span>
         <span>
           <span style="display:block;font-weight:600;font-size:19px;letter-spacing:-.015em;margin-bottom:4px"><span data-l="zh">量化笔记</span><span data-l="en">Quant notes</span></span>
@@ -150,7 +88,7 @@
         </span>
         <span style="font-family:Archivo,sans-serif;font-size:17px;font-weight:400;color:rgba(23,28,38,.3)">→</span>
       </a>
-      <a href="#podcast" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" style-hover="background:#fafbfd;padding-left:10px">
+      <a href="#podcast" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" data-hover>
         <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(42,91,215,.08);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em">03</span>
         <span>
           <span style="display:block;font-weight:600;font-size:19px;letter-spacing:-.015em;margin-bottom:4px"><span data-l="zh">播客</span><span data-l="en">Podcast</span></span>
@@ -158,7 +96,7 @@
         </span>
         <span style="font-family:Archivo,sans-serif;font-size:17px;font-weight:400;color:rgba(23,28,38,.3)">→</span>
       </a>
-      <a href="#video" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" style-hover="background:#fafbfd;padding-left:10px">
+      <a href="#video" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" data-hover>
         <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(42,91,215,.08);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em">04</span>
         <span>
           <span style="display:block;font-weight:600;font-size:19px;letter-spacing:-.015em;margin-bottom:4px"><span data-l="zh">视频（筹备中）</span><span data-l="en">Video (in prep)</span></span>
@@ -166,7 +104,7 @@
         </span>
         <span style="font-family:Archivo,sans-serif;font-size:17px;font-weight:400;color:rgba(23,28,38,.3)">→</span>
       </a>
-      <a href="#writing" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" style-hover="background:#fafbfd;padding-left:10px">
+      <a href="#writing" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" data-hover>
         <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(42,91,215,.08);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em">05</span>
         <span>
           <span style="display:block;font-weight:600;font-size:19px;letter-spacing:-.015em;margin-bottom:4px"><span data-l="zh">长文</span><span data-l="en">Essays</span></span>
@@ -174,7 +112,7 @@
         </span>
         <span style="font-family:Archivo,sans-serif;font-size:17px;font-weight:400;color:rgba(23,28,38,.3)">→</span>
       </a>
-      <a href="#poems" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" style-hover="background:#fafbfd;padding-left:10px">
+      <a href="#poems" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" data-hover>
         <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(42,91,215,.08);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em">06</span>
         <span>
           <span style="display:block;font-weight:600;font-size:19px;letter-spacing:-.015em;margin-bottom:4px"><span data-l="zh">英文小诗</span><span data-l="en">Poems</span></span>
@@ -182,7 +120,7 @@
         </span>
         <span style="font-family:Archivo,sans-serif;font-size:17px;font-weight:400;color:rgba(23,28,38,.3)">→</span>
       </a>
-      <a href="#life" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" style-hover="background:#fafbfd;padding-left:10px">
+      <a href="#life" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:21px 0;border-bottom:1px solid rgba(23,28,38,.1);color:#171c26;transition:background .18s ease,padding .18s ease" data-hover>
         <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(42,91,215,.08);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em">07</span>
         <span>
           <span style="display:block;font-weight:600;font-size:19px;letter-spacing:-.015em;margin-bottom:4px"><span data-l="zh">山路与旅行</span><span data-l="en">Trails &amp; travel</span></span>
@@ -203,7 +141,7 @@
     </div>
   </section>
 
-  <section data-page="products">
+  <section id="products" data-page="products">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">01 — <span data-l="zh">产品</span><span data-l="en">Products</span></span>
     <h1 style="font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-.025em;margin:0 0 22px;margin-left:-.04em">
       <span data-l="zh">每个产品，都是自己从头做完的。</span><span data-l="en">Every product, built start to finish.</span>
@@ -213,11 +151,16 @@
       <span data-l="en">Interaction, visuals, code, copy — all mine. The desktop ones came out of podcasting.</span>
     </p>
 
-    <h2 style="font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:rgba(23,28,38,.6);margin:0 0 8px"><span data-l="zh">手机 · iOS</span><span data-l="en">Phone · iOS</span></h2>
-    <hr style="height:2px;border:0;margin:0 0 32px;background:rgba(23,28,38,.13)">
+    <div class="product-filters" role="group" aria-label="Product platform">
+      <button type="button" data-filter="all" aria-pressed="true"><span data-l="zh">全部产品</span><span data-l="en">All products</span></button>
+      <button type="button" data-filter="ios" aria-pressed="false">iOS</button>
+      <button type="button" data-filter="desktop" aria-pressed="false"><span data-l="zh">桌面工具</span><span data-l="en">Desktop</span></button>
+    </div>
+    <h2 data-platform="ios" style="font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:rgba(23,28,38,.6);margin:0 0 8px"><span data-l="zh">手机 · iOS</span><span data-l="en">Phone · iOS</span></h2>
+    <hr data-platform="ios" style="height:2px;border:0;margin:0 0 32px;background:rgba(23,28,38,.13)">
 
-    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
-      <img src="assets/icon-readshot.png" alt="ReadShot" style="width:96px;height:96px;transition:transform .2s ease" style-hover="transform:scale(1.05)">
+    <article data-platform="ios" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
+      <img src="assets/icon-readshot.png" alt="ReadShot" style="width:96px;height:96px;transition:transform .2s ease" data-hover>
       <div>
         <h3 style="font-size:28px;margin:0 0 8px">ReadShot</h3>
         <p style="font-size:14px;font-weight:700;letter-spacing:.04em;color:#1e429f;margin:0 0 14px">read, shot, remember</p>
@@ -226,12 +169,12 @@
           <span data-l="en">See a sentence worth keeping? Take a photo. ReadShot pulls the text out, helps you read it, and queues it for review — instead of screenshots rotting in your camera roll.</span>
         </p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline">OCR</span><span class="tag tag-outline"><span data-l="zh">复习</span><span data-l="en">Review</span></span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap"><a href="#" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">GitHub 仓库 →</span><span data-l="en">GitHub repo →</span></a></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><span data-unavailable aria-disabled="true" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">仓库暂未公开</span><span data-l="en">Repository not yet public</span></span></div>
       </div>
     </article>
 
-    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
-      <img src="assets/icon-sona.png" alt="Sona" style="width:96px;height:96px;transition:transform .2s ease" style-hover="transform:scale(1.05)">
+    <article data-platform="ios" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
+      <img src="assets/icon-sona.png" alt="Sona" style="width:96px;height:96px;transition:transform .2s ease" data-hover>
       <div>
         <h3 style="font-size:28px;margin:0 0 8px">Sona</h3>
         <p style="font-size:14px;font-weight:700;letter-spacing:.04em;color:#1e429f;margin:0 0 14px">listen, repeat, learn</p>
@@ -240,12 +183,12 @@
           <span data-l="en">Listen, say it out loud, save it, come back stronger. The two bubbles in the icon are that loop — a language gets used into place, not memorised.</span>
         </p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline"><span data-l="zh">语言学习</span><span data-l="en">Language</span></span><span class="tag tag-outline"><span data-l="zh">听说</span><span data-l="en">Speaking</span></span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap"><a href="#" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">GitHub 仓库 →</span><span data-l="en">GitHub repo →</span></a></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><span data-unavailable aria-disabled="true" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">仓库暂未公开</span><span data-l="en">Repository not yet public</span></span></div>
       </div>
     </article>
 
-    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
-      <img src="assets/icon-lexigo.png" alt="Lexigo" style="width:96px;height:96px;transition:transform .2s ease" style-hover="transform:scale(1.05)">
+    <article data-platform="ios" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
+      <img src="assets/icon-lexigo.png" alt="Lexigo" style="width:96px;height:96px;transition:transform .2s ease" data-hover>
       <div>
         <h3 style="font-size:28px;margin:0 0 8px">Lexigo</h3>
         <p style="font-size:14px;font-weight:700;letter-spacing:.04em;color:#1e429f;margin:0 0 14px">play &amp; remember</p>
@@ -254,11 +197,11 @@
           <span data-l="en">Boredom kills vocabulary apps. Lexigo turns it into short rounds you'll actually play — and you pick up a few words winning them.</span>
         </p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline"><span data-l="zh">词汇</span><span data-l="en">Vocabulary</span></span><span class="tag tag-outline"><span data-l="zh">游戏化</span><span data-l="en">Game</span></span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap"><a href="#" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">GitHub 仓库 →</span><span data-l="en">GitHub repo →</span></a></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><span data-unavailable aria-disabled="true" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">仓库暂未公开</span><span data-l="en">Repository not yet public</span></span></div>
       </div>
     </article>
 
-    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
+    <article data-platform="ios" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
       <span style="display:flex;align-items:center;justify-content:center;width:96px;height:96px;border:2px dashed rgba(23,28,38,.3);font-size:11px;line-height:1.5;letter-spacing:.04em;color:rgba(23,28,38,.48);text-align:center"><span data-l="zh">图标<br>待补</span><span data-l="en">Icon<br>TBD</span></span>
       <div>
         <h3 style="font-size:28px;margin:0 0 8px">MedTime</h3>
@@ -268,14 +211,14 @@
           <span data-l="en">Built for family: which pills, what time, how many left — all remembered for them. Loud enough to notice, simple enough to use.</span>
         </p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px"><span class="tag tag-accent">iOS</span><span class="tag tag-outline"><span data-l="zh">提醒</span><span data-l="en">Reminders</span></span><span class="tag tag-outline"><span data-l="zh">家人</span><span data-l="en">Family</span></span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap"><a href="#" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">GitHub 仓库 →</span><span data-l="en">GitHub repo →</span></a></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><span data-unavailable aria-disabled="true" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">仓库暂未公开</span><span data-l="en">Repository not yet public</span></span></div>
       </div>
     </article>
 
-    <h2 style="font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:rgba(23,28,38,.6);margin:clamp(44px,5vw,68px) 0 8px"><span data-l="zh">电脑 · macOS / Windows</span><span data-l="en">Desktop · macOS / Windows</span></h2>
-    <hr style="height:2px;border:0;margin:0 0 32px;background:rgba(23,28,38,.13)">
+    <h2 data-platform="desktop" style="font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:rgba(23,28,38,.6);margin:clamp(44px,5vw,68px) 0 8px"><span data-l="zh">电脑 · macOS / Windows</span><span data-l="en">Desktop · macOS / Windows</span></h2>
+    <hr data-platform="desktop" style="height:2px;border:0;margin:0 0 32px;background:rgba(23,28,38,.13)">
 
-    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
+    <article data-platform="desktop" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px);padding:0 0 32px;border-bottom:1px solid rgba(23,28,38,.13);margin:0 0 32px">
       <span style="display:flex;align-items:center;justify-content:center;width:96px;height:96px;background:#f5f7fa;border:1px solid rgba(23,28,38,.1);color:#1e429f;font-family:Archivo,sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em">vC</span>
       <div>
         <h3 style="font-size:28px;margin:0 0 8px">voCut</h3>
@@ -285,12 +228,12 @@
           <span data-l="en">Cut audio by transcript — deleting words deletes audio. Duplicate takes line up side by side: keep one, drop the rest in a click. Pauses, fillers and loudness handled before export.</span>
         </p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px"><span class="tag tag-accent">macOS</span><span class="tag tag-accent">Windows</span><span class="tag tag-outline"><span data-l="zh">自用中</span><span data-l="en">In daily use</span></span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap"><a href="#" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">GitHub 仓库 →</span><span data-l="en">GitHub repo →</span></a></div>
-        <figure style="margin:22px 0 0;max-width:520px"><image-slot id="desk-audio" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/10" placeholder="voCut 界面截图"></image-slot></figure>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><span data-unavailable aria-disabled="true" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">仓库暂未公开</span><span data-l="en">Repository not yet public</span></span></div>
+        <figure style="margin:22px 0 0;max-width:520px"><image-slot id="desk-audio" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/10" placeholder="voCut screenshot" data-placeholder-en="voCut screenshot" data-placeholder-zh="voCut 界面截图"></image-slot></figure>
       </div>
     </article>
 
-    <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px)">
+    <article data-platform="desktop" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,3vw,36px)">
       <span style="display:flex;align-items:center;justify-content:center;width:96px;height:96px;border:1px solid rgba(23,28,38,.22);color:#171c26;font-family:Archivo,sans-serif;font-weight:600;font-size:30px;letter-spacing:-.03em">aS</span>
       <div>
         <h3 style="font-size:28px;margin:0 0 8px">attentionStudio</h3>
@@ -300,13 +243,13 @@
           <span data-l="en">A video is ultimately generated out of attention — so this manages prompts, not files: broken down shot by shot, revisions side by side with their outputs attached, the good ones saved as templates.</span>
         </p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px"><span class="tag tag-accent">macOS</span><span class="tag tag-accent">Windows</span><span class="tag tag-outline"><span data-l="zh">开发中</span><span data-l="en">In progress</span></span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap"><a href="#" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">GitHub 仓库 →</span><span data-l="en">GitHub repo →</span></a></div>
-        <figure style="margin:22px 0 0;max-width:520px"><image-slot id="desk-prompt" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/10" placeholder="attentionStudio 界面截图"></image-slot></figure>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><span data-unavailable aria-disabled="true" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span data-l="zh">仓库暂未公开</span><span data-l="en">Repository not yet public</span></span></div>
+        <figure style="margin:22px 0 0;max-width:520px"><image-slot id="desk-prompt" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/10" placeholder="attentionStudio screenshot" data-placeholder-en="attentionStudio screenshot" data-placeholder-zh="attentionStudio 界面截图"></image-slot></figure>
       </div>
     </article>
   </section>
 
-  <section data-page="quant">
+  <section id="quant" data-page="quant">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">02 — <span data-l="zh">量化笔记</span><span data-l="en">Quant notes</span></span>
     <h1 style="font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-.025em;margin:0 0 22px;margin-left:-.04em">
       <span data-l="zh">先想办法证伪，再谈信心。</span><span data-l="en">Try to break it first.</span>
@@ -353,48 +296,29 @@
     </div>
   </section>
 
-  <section data-page="podcast">
+  <section id="podcast" data-page="podcast">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">03 — <span data-l="zh">播客</span><span data-l="en">Podcast</span></span>
-    <div data-r="split" style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start">
+    <header class="podcast-intro">
+      <img src="assets/podcast-cover.png" alt="大不了就出个 Bug" width="144" height="144">
       <div>
-        <img src="assets/podcast-cover.png" alt="播客封面" style="width:100%;height:auto;margin:0 0 20px">
-        <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
-          <a class="btn btn-primary" href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener"><span data-l="zh">收听（全平台）</span><span data-l="en">Listen (all platforms)</span></a>
-          <a class="btn btn-ghost" href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener">Apple Podcasts · Spotify</a>
+        <h1><span data-l="zh">大不了就出个 Bug。</span><span data-l="en">Worst case, a bug.</span></h1>
+        <p><span data-l="zh">一个人的生活探索录。聊语言、社交、旅行和成长，也聊那些试错的时刻。</span><span data-l="en">One person's field notes on language, people, travel and growing — including the things that went wrong.</span></p>
+        <div class="podcast-actions">
+          <a class="btn btn-primary" href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener"><span data-l="zh">全平台收听 ↗</span><span data-l="en">Listen anywhere ↗</span></a>
+          <a class="btn btn-secondary" href="https://feed.firstory.me/rss/user/cmq5jhwm702rk01zl3m029l0a" target="_blank" rel="noopener"><span data-l="zh">RSS 订阅 ↗</span><span data-l="en">Subscribe via RSS ↗</span></a>
         </div>
       </div>
-      <div>
-        <h1 style="font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-.025em;margin:0 0 20px;margin-left:-.04em">
-          <span data-l="zh">大不了就出个 Bug。</span><span data-l="en">Worst case, a bug.</span>
-        </h1>
-        <p style="font-size:17px;line-height:1.75;max-width:46ch;margin:0 0 18px;color:rgba(23,28,38,.68)">
-          <span data-l="zh">一个人录的节目，聊语言、社交、生活、探索和成长。都是自己真的试过之后的结论，包括试错的那部分。</span>
-          <span data-l="en">A one-person show about language, people, living, exploring and growing — everything I've actually tried, including the parts that went wrong.</span>
-        </p>
-        <p style="font-size:17px;line-height:1.75;max-width:46ch;margin:0 0 clamp(28px,3.5vw,44px);color:rgba(23,28,38,.68)">
-          <span data-l="zh">「探索世界，也探索那个还没长成的自己。」</span>
-          <span data-l="en">"Explore the world — and the version of yourself that isn't finished yet."</span>
-        </p>
-        <h3 style="font-size:16px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px;color:rgba(23,28,38,.6)"><span data-l="zh">最近几期</span><span data-l="en">Recent episodes</span></h3>
-        <div style="border-top:1px solid rgba(23,28,38,.13);margin-top:16px">
-          <a href="#" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
-            <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.08em;color:#1e429f;background:rgba(42,91,215,.08);padding:6px 8px;white-space:nowrap">EP 03</span>
-            <span><span style="display:block;font-weight:600;font-size:18px;letter-spacing:-.01em;margin-bottom:5px"><span data-l="zh">标题待补</span><span data-l="en">Title to come</span></span><span style="display:block;font-size:14px;color:rgba(23,28,38,.6)"><span data-l="zh">把这行换成一句话简介</span><span data-l="en">Replace this line with a one-sentence summary</span></span></span>
-          </a>
-          <a href="#" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
-            <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.08em;color:#1e429f;background:rgba(42,91,215,.08);padding:6px 8px;white-space:nowrap">EP 02</span>
-            <span><span style="display:block;font-weight:600;font-size:18px;letter-spacing:-.01em;margin-bottom:5px"><span data-l="zh">标题待补</span><span data-l="en">Title to come</span></span><span style="display:block;font-size:14px;color:rgba(23,28,38,.6)"><span data-l="zh">把这行换成一句话简介</span><span data-l="en">Replace this line with a one-sentence summary</span></span></span>
-          </a>
-          <a href="#" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
-            <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.08em;color:#1e429f;background:rgba(42,91,215,.08);padding:6px 8px;white-space:nowrap">EP 01</span>
-            <span><span style="display:block;font-weight:600;font-size:18px;letter-spacing:-.01em;margin-bottom:5px"><span data-l="zh">标题待补</span><span data-l="en">Title to come</span></span><span style="display:block;font-size:14px;color:rgba(23,28,38,.6)"><span data-l="zh">把这行换成一句话简介</span><span data-l="en">Replace this line with a one-sentence summary</span></span></span>
-          </a>
-        </div>
-      </div>
-    </div>
+    </header>
+    <div class="episode-heading"><h2><span data-l="zh">全部单集</span><span data-l="en">All episodes</span></h2><span id="episode-count"></span></div>
+    <div id="podcast-series" class="product-filters" role="group" aria-label="Podcast series" hidden></div>
+
+        <div id="podcast-episodes" class="podcast-episodes" aria-busy="true"></div>
+        <p id="podcast-status" class="podcast-status" role="status"><span data-l="zh">正在加载最新单集…</span><span data-l="en">Loading recent episodes…</span></p>
+        <p id="podcast-fallback" hidden><span data-l="zh">暂时无法读取订阅源。</span><span data-l="en">The feed is currently unavailable.</span> <a href="https://open.firstory.me/user/cmq5jhwm702rk01zl3m029l0a/platforms" target="_blank" rel="noopener"><span data-l="zh">前往播客主页收听 ↗</span><span data-l="en">Listen on the podcast website ↗</span></a></p>
+    <noscript><p>请启用 JavaScript 展示单集，或通过上方链接收听。 Enable JavaScript to view episodes.</p></noscript>
   </section>
 
-  <section data-page="video">
+  <section id="video" data-page="video">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">04 — <span data-l="zh">视频</span><span data-l="en">Video</span></span>
     <h1 style="font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-.025em;margin:0 0 22px;margin-left:-.04em">
       <span data-l="zh">把播客里讲不清的，拍出来。</span><span data-l="en">Filming what the podcast can't explain.</span>
@@ -405,13 +329,13 @@
     </p>
     <div data-r="cards" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,40px)">
       <div>
-        <figure style="margin:0 0 16px"><image-slot id="video-1" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/9" placeholder="第一条视频封面"></image-slot></figure>
+        <figure style="margin:0 0 16px"><image-slot id="video-1" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/9" placeholder="First video cover" data-placeholder-en="First video cover" data-placeholder-zh="第一条视频封面"></image-slot></figure>
         <span style="display:inline-flex;align-items:center;background:rgba(42,91,215,.08);color:#1e429f;padding:6px 10px;font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase"><span data-l="zh">筹备中</span><span data-l="en">In prep</span></span>
         <h2 style="font-size:22px;margin:10px 0 8px"><span data-l="zh">一款 App 是怎么被想出来的</span><span data-l="en">How an app gets thought up</span></h2>
         <p style="font-size:15px;line-height:1.65;margin:0;color:rgba(23,28,38,.64)"><span data-l="zh">从一个日常的小烦躁，到 App Store 上的一个图标。</span><span data-l="en">From a small daily annoyance to an icon on the App Store.</span></p>
       </div>
       <div>
-        <figure style="margin:0 0 16px"><image-slot id="video-2" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/9" placeholder="第二条视频封面"></image-slot></figure>
+        <figure style="margin:0 0 16px"><image-slot id="video-2" shape="rect" fit="cover" style="width:100%;aspect-ratio:16/9" placeholder="Second video cover" data-placeholder-en="Second video cover" data-placeholder-zh="第二条视频封面"></image-slot></figure>
         <span style="display:inline-flex;align-items:center;background:rgba(42,91,215,.08);color:#1e429f;padding:6px 10px;font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase"><span data-l="zh">筹备中</span><span data-l="en">In prep</span></span>
         <h2 style="font-size:22px;margin:10px 0 8px"><span data-l="zh">我用 AI 写视频脚本的流程</span><span data-l="en">My AI scripting workflow</span></h2>
         <p style="font-size:15px;line-height:1.65;margin:0;color:rgba(23,28,38,.64)"><span data-l="zh">分镜、prompt、版本对比——顺手演示那个桌面工具。</span><span data-l="en">Shots, prompts, versions — with a walkthrough of the desktop tool.</span></p>
@@ -419,7 +343,7 @@
     </div>
   </section>
 
-  <section data-page="poems">
+  <section id="poems" data-page="poems">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">06 — <span data-l="zh">英文小诗</span><span data-l="en">Poems</span></span>
     <h1 style="font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-.025em;margin:0 0 22px;margin-left:-.04em">
       <span data-l="zh">用一门还不熟的语言写短句。</span><span data-l="en">Short lines in a language I'm still learning.</span>
@@ -428,92 +352,134 @@
       <span data-l="zh">英文句子短，逼着我把话说准——和写代码有点像。目前两首。</span>
       <span data-l="en">English sentences are short, which forces precision — not unlike code. Two so far.</span>
     </p>
-    <div style="max-width:52ch;border-top:1px solid rgba(23,28,38,.13);padding-top:clamp(32px,4vw,48px)">
-      <article style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;padding:0 0 clamp(40px,5vw,64px);border-bottom:1px solid rgba(23,28,38,.13)">
-        <span style="font-family:Archivo,sans-serif;font-weight:500;font-size:13px;line-height:2.4;color:#2a5bd7;font-feature-settings:'tnum' 1">I</span>
-        <div>
-          <h2 style="font-size:clamp(24px,2.6vw,32px);line-height:1.15;letter-spacing:-.02em;margin:0 0 6px;margin-left:-.03em">Rings of Time and Light</h2>
-          <p style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(23,28,38,.52);margin:0 0 30px">Muir Woods · 2026</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">Sunlight falls<br>
+    <div class="poem-motion-controls"><button class="poem-motion-toggle" type="button" data-poem-motion aria-pressed="false"><span data-l="zh">暂停动态效果</span><span data-l="en">Pause motion</span></button></div>
+    <div class="poem-shelf">
+      <a class="poem-cover" href="#poem-rings-of-time" aria-labelledby="cover-title-0">
+        <span class="poem-cover-image"><img src="assets/poem-rings-of-time.png" alt="Watercolor of sunlight falling through an ancient redwood forest, with tree rings in the foreground." width="1536" height="1024" loading="lazy" decoding="async"></span>
+        <span class="poem-kicker">01 / Muir Woods · 2026</span>
+        <h2 id="cover-title-0" lang="en">Rings of Time and Light</h2>
+        <p class="poem-excerpt" lang="en">Sunlight falls<br>
           through a thousand years of leaves,<br>
           waving a soft mist in the air.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">I lift my head<br>
+        <span class="poem-read"><span data-l="zh">读这首诗</span><span data-l="en">Read poem</span> ↗</span>
+      </a>
+      <a class="poem-cover" href="#poem-mooncake-waiting" aria-labelledby="cover-title-1">
+        <span class="poem-cover-image"><img src="assets/poem-mooncake-waiting.png" alt="Watercolor of a mooncake waiting on a table beside a moonlit window and an empty chair." width="1536" height="1024" loading="lazy" decoding="async"></span>
+        <span class="poem-kicker">02 / Mid-Autumn · 2026</span>
+        <h2 id="cover-title-1" lang="en">Mooncake Waiting</h2>
+        <p class="poem-excerpt" lang="en">The moon was full, but I was not home.<br>
+          Mid-Autumn came and went<br>
+          through phone calls</p>
+        <span class="poem-read"><span data-l="zh">读这首诗</span><span data-l="en">Read poem</span> ↗</span>
+      </a>
+    </div>
+    <p class="poem-coming"><span data-l="zh">下一首还在写。</span><span data-l="en">The next one is still being written.</span></p>
+  </section>
+
+  <section id="poem-rings-of-time" data-page="poem-rings-of-time" class="poem-reader">
+    <div class="poem-toolbar">
+    <a class="poem-back" href="#poems">← <span data-l="zh">返回诗集</span><span data-l="en">Back to poems</span></a>
+    <div class="poem-motion-controls"><button class="poem-motion-toggle" type="button" data-poem-motion aria-pressed="false"><span data-l="zh">暂停动态效果</span><span data-l="en">Pause motion</span></button></div>
+    </div>
+    <figure class="poem-banner"><img src="assets/poem-rings-of-time.png" alt="Watercolor of sunlight falling through an ancient redwood forest, with tree rings in the foreground." width="1536" height="1024" loading="lazy" decoding="async"></figure>
+    <div class="poem-reading-column">
+      <header class="poem-reader-header">
+        <p class="poem-kicker">01 / Muir Woods · 2026</p>
+        <h1 lang="en">Rings of Time and Light</h1>
+      </header>
+      <div class="poem-verses" lang="en">
+          <p>Sunlight falls<br>
+          through a thousand years of leaves,<br>
+          waving a soft mist in the air.</p>
+          <p>I lift my head<br>
           and see the sharp edge of light,<br>
           cutting through silence.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">In the slow breeze of time,<br>
+          <p>In the slow breeze of time,<br>
           the redwood stands—<br>
           its trunk laid open,<br>
           rings unfolding<br>
           like quiet stories.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">Eighty—<br>
+          <p>Eighty—<br>
           the world begins to count.<br>
           One hundred and five—<br>
           paper is born in the East,<br>
           hands shaping words<br>
           from pulp and fiber.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">And still,<br>
+          <p>And still,<br>
           this tree was only learning<br>
           how to reach the sky.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">Now their paths meet—<br>
+          <p>Now their paths meet—<br>
           ink and green,<br>
           salt and root.<br>
           I trace the lines in the wood,<br>
           feeling the pulse of centuries.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">Time does not pass.<br>
+          <p>Time does not pass.<br>
           It rests,<br>
           softly kept<br>
           by the forest.</p>
         </div>
-      </article>
-      <article style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;padding:clamp(40px,5vw,64px) 0 clamp(40px,5vw,64px);border-bottom:1px solid rgba(23,28,38,.13)">
-        <span style="font-family:Archivo,sans-serif;font-weight:500;font-size:13px;line-height:2.4;color:#2a5bd7;font-feature-settings:'tnum' 1">II</span>
-        <div>
-          <h2 style="font-size:clamp(24px,2.6vw,32px);line-height:1.15;letter-spacing:-.02em;margin:0 0 6px;margin-left:-.03em">Mooncake Waiting</h2>
-          <p style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(23,28,38,.52);margin:0 0 30px">Mid-Autumn · 2026</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">The moon was full, but I was not home.<br>
+      <nav class="poem-reader-nav" aria-label="Poem navigation">
+        <a href="#poems">← <span data-l="zh">返回诗集</span><span data-l="en">All poems</span></a>
+        <a href="#poem-mooncake-waiting"><span class="poem-next-label"><span data-l="zh">下一首</span><span data-l="en">Next poem</span></span><span lang="en">Mooncake Waiting →</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section id="poem-mooncake-waiting" data-page="poem-mooncake-waiting" class="poem-reader">
+    <div class="poem-toolbar">
+    <a class="poem-back" href="#poems">← <span data-l="zh">返回诗集</span><span data-l="en">Back to poems</span></a>
+    <div class="poem-motion-controls"><button class="poem-motion-toggle" type="button" data-poem-motion aria-pressed="false"><span data-l="zh">暂停动态效果</span><span data-l="en">Pause motion</span></button></div>
+    </div>
+    <figure class="poem-banner"><img src="assets/poem-mooncake-waiting.png" alt="Watercolor of a mooncake waiting on a table beside a moonlit window and an empty chair." width="1536" height="1024" loading="lazy" decoding="async"></figure>
+    <div class="poem-reading-column">
+      <header class="poem-reader-header">
+        <p class="poem-kicker">02 / Mid-Autumn · 2026</p>
+        <h1 lang="en">Mooncake Waiting</h1>
+      </header>
+      <div class="poem-verses" lang="en">
+          <p>The moon was full, but I was not home.<br>
           Mid-Autumn came and went<br>
           through phone calls<br>
           that ended too soon,<br>
           through promises<br>
           that stretched too far.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">You had already saved one for me—<br>
+          <p>You had already saved one for me—<br>
           a mooncake, round and patient,<br>
           resting quietly on the table.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">From that night on, it stayed there,<br>
+          <p>From that night on, it stayed there,<br>
           watching seasons shift,<br>
           counting footsteps that never came.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">When I finally returned,<br>
+          <p>When I finally returned,<br>
           the air had turned cool.<br>
           You were sitting by the door,<br>
           as if time had decided to wait with you.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">You did not ask why.<br>
+          <p>You did not ask why.<br>
           You only smiled,<br>
           and placed the mooncake<br>
           into my hands.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">It felt lighter—<br>
+          <p>It felt lighter—<br>
           as though something inside<br>
           had already faded.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">Only then I saw<br>
+          <p>Only then I saw<br>
           the soft bloom of mold,<br>
           spreading like a forgotten story<br>
           across its surface.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">I wanted to speak,<br>
+          <p>I wanted to speak,<br>
           but the silence<br>
           knew me better.</p>
-          <p style="font-family:Archivo,sans-serif;font-weight:400;font-size:clamp(18px,1.7vw,21px);line-height:1.95;margin:0 0 30px;color:#171c26">So I held it there—<br>
+          <p>So I held it there—<br>
           that once-perfect circle—<br>
           and understood<br>
           how long love can wait without being seen.</p>
         </div>
-      </article>
-      <p style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);padding:clamp(28px,3.5vw,40px) 0 0;margin:0;font-size:14px;line-height:1.7;color:rgba(23,28,38,.48)">
-        <span style="font-family:Archivo,sans-serif;font-weight:500;font-size:13px;color:rgba(23,28,38,.3)">III</span>
-        <span><span data-l="zh">下一首还在写。</span><span data-l="en">The next one is still being written.</span></span>
-      </p>
+      <nav class="poem-reader-nav" aria-label="Poem navigation">
+        <a href="#poems">← <span data-l="zh">返回诗集</span><span data-l="en">All poems</span></a>
+        <a href="#poem-rings-of-time"><span class="poem-next-label"><span data-l="zh">上一篇</span><span data-l="en">Previous poem</span></span><span lang="en">Rings of Time and Light →</span></a>
+      </nav>
     </div>
   </section>
 
-  <section data-page="writing">
+  <section id="writing" data-page="writing">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">05 — <span data-l="zh">长文</span><span data-l="en">Essays</span></span>
     <h1 style="font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-.025em;margin:0 0 22px;margin-left:-.04em">
       <span data-l="zh">想清楚了才写得出来。</span><span data-l="en">If I can't write it, I haven't understood it.</span>
@@ -523,31 +489,31 @@
       <span data-l="en">Notes from around the apps, the strategies and the podcast.</span>
     </p>
     <div style="border-top:1px solid rgba(23,28,38,.13)">
-      <a href="#writing" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:26px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:26px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
         <span style="font-size:12px;font-family:Archivo,sans-serif;font-weight:600;letter-spacing:.06em;color:rgba(23,28,38,.5)">2026.09</span>
         <span>
           <span style="display:block;font-weight:600;font-size:21px;letter-spacing:-.015em;margin-bottom:8px"><span data-l="zh">文章标题待补</span><span data-l="en">Article title to come</span></span>
-          <span style="display:block;font-size:15px;line-height:1.65;max-width:48ch;color:rgba(23,28,38,.64)"><span data-l="zh">两三句摘要放这里。写完正文后把这段换成真正的开头。</span><span data-l="en">Two or three lines of summary go here — swap in the real opening once the piece is written.</span></span>
+          <span style="display:block;font-size:15px;line-height:1.65;max-width:48ch;color:rgba(23,28,38,.64)"><span data-l="zh">文章正在整理中，完成后会在这里更新。</span><span data-l="en">This essay is in progress. The finished piece will appear here.</span></span>
         </span>
-      </a>
-      <a href="#writing" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:26px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
+      </div>
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:26px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
         <span style="font-size:12px;font-family:Archivo,sans-serif;font-weight:600;letter-spacing:.06em;color:rgba(23,28,38,.5)">2026.08</span>
         <span>
           <span style="display:block;font-weight:600;font-size:21px;letter-spacing:-.015em;margin-bottom:8px"><span data-l="zh">文章标题待补</span><span data-l="en">Article title to come</span></span>
-          <span style="display:block;font-size:15px;line-height:1.65;max-width:48ch;color:rgba(23,28,38,.64)"><span data-l="zh">两三句摘要放这里。</span><span data-l="en">Two or three lines of summary go here.</span></span>
+          <span style="display:block;font-size:15px;line-height:1.65;max-width:48ch;color:rgba(23,28,38,.64)"><span data-l="zh">文章尚未发布，完成后开放阅读。</span><span data-l="en">Not published yet. Reading will be available when finished.</span></span>
         </span>
-      </a>
-      <a href="#writing" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:26px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
+      </div>
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:26px 0;border-bottom:1px solid rgba(23,28,38,.13);color:#171c26">
         <span style="font-size:12px;font-family:Archivo,sans-serif;font-weight:600;letter-spacing:.06em;color:rgba(23,28,38,.5)">2026.07</span>
         <span>
           <span style="display:block;font-weight:600;font-size:21px;letter-spacing:-.015em;margin-bottom:8px"><span data-l="zh">文章标题待补</span><span data-l="en">Article title to come</span></span>
-          <span style="display:block;font-size:15px;line-height:1.65;max-width:48ch;color:rgba(23,28,38,.64)"><span data-l="zh">两三句摘要放这里。</span><span data-l="en">Two or three lines of summary go here.</span></span>
+          <span style="display:block;font-size:15px;line-height:1.65;max-width:48ch;color:rgba(23,28,38,.64)"><span data-l="zh">文章尚未发布，完成后开放阅读。</span><span data-l="en">Not published yet. Reading will be available when finished.</span></span>
         </span>
-      </a>
+      </div>
     </div>
   </section>
 
-  <section data-page="life">
+  <section id="life" data-page="life">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">07 — <span data-l="zh">山路与旅行</span><span data-l="en">Trails &amp; travel</span></span>
     <h1 style="font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-.025em;margin:0 0 22px;margin-left:-.04em">
       <span data-l="zh">走远一点，试新一点。</span><span data-l="en">Walk further, try newer things.</span>
@@ -558,7 +524,7 @@
     </p>
     <div data-r="split" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,44px)">
       <div>
-        <figure style="margin:0 0 18px"><image-slot id="life-hike" shape="rect" fit="cover" style="width:100%;aspect-ratio:3/2" placeholder="徒步照片"></image-slot></figure>
+        <figure style="margin:0 0 18px"><image-slot id="life-hike" shape="rect" fit="cover" style="width:100%;aspect-ratio:3/2" placeholder="Hiking photo" data-placeholder-en="Hiking photo" data-placeholder-zh="徒步照片"></image-slot></figure>
         <h2 style="font-size:24px;margin:0 0 10px"><span data-l="zh">徒步 Hike</span><span data-l="en">Hiking</span></h2>
         <p style="font-size:16px;line-height:1.7;margin:0;color:rgba(23,28,38,.66)">
           <span data-l="zh">走路的时候脑子最清楚。一年挑几条线，背包越轻越好，日落前一定下山。</span>
@@ -566,7 +532,7 @@
         </p>
       </div>
       <div>
-        <figure style="margin:0 0 18px"><image-slot id="life-explore" shape="rect" fit="cover" style="width:100%;aspect-ratio:3/2" placeholder="探索 / 日常照片"></image-slot></figure>
+        <figure style="margin:0 0 18px"><image-slot id="life-explore" shape="rect" fit="cover" style="width:100%;aspect-ratio:3/2" placeholder="Everyday exploration" data-placeholder-en="Everyday exploration" data-placeholder-zh="探索 / 日常照片"></image-slot></figure>
         <h2 style="font-size:24px;margin:0 0 10px"><span data-l="zh">探索新事物</span><span data-l="en">Trying new things</span></h2>
         <p style="font-size:16px;line-height:1.7;margin:0;color:rgba(23,28,38,.66)">
           <span data-l="zh">新语言、新城市、新工具、新录音设备——先上手试，做坏了再说。大不了就出个 Bug。</span>
@@ -581,16 +547,16 @@
       <span data-l="en">Travel photos, loosely by date. Drop one in and write a line under it.</span>
     </p>
     <div data-r="grid3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px)">
-      <figure style="margin:0"><image-slot id="trip-1" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="旅行照片 1"></image-slot></figure>
-      <figure style="margin:0"><image-slot id="trip-2" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="旅行照片 2"></image-slot></figure>
-      <figure style="margin:0"><image-slot id="trip-3" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="旅行照片 3"></image-slot></figure>
-      <figure style="margin:0"><image-slot id="trip-4" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="旅行照片 4"></image-slot></figure>
-      <figure style="margin:0"><image-slot id="trip-5" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="旅行照片 5"></image-slot></figure>
-      <figure style="margin:0"><image-slot id="trip-6" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="旅行照片 6"></image-slot></figure>
+      <figure style="margin:0"><image-slot id="trip-1" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="Travel photo 1" data-placeholder-en="Travel photo 1" data-placeholder-zh="旅行照片 1"></image-slot></figure>
+      <figure style="margin:0"><image-slot id="trip-2" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="Travel photo 2" data-placeholder-en="Travel photo 2" data-placeholder-zh="旅行照片 2"></image-slot></figure>
+      <figure style="margin:0"><image-slot id="trip-3" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="Travel photo 3" data-placeholder-en="Travel photo 3" data-placeholder-zh="旅行照片 3"></image-slot></figure>
+      <figure style="margin:0"><image-slot id="trip-4" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="Travel photo 4" data-placeholder-en="Travel photo 4" data-placeholder-zh="旅行照片 4"></image-slot></figure>
+      <figure style="margin:0"><image-slot id="trip-5" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="Travel photo 5" data-placeholder-en="Travel photo 5" data-placeholder-zh="旅行照片 5"></image-slot></figure>
+      <figure style="margin:0"><image-slot id="trip-6" shape="rect" fit="cover" style="width:100%;aspect-ratio:1/1" placeholder="Travel photo 6" data-placeholder-en="Travel photo 6" data-placeholder-zh="旅行照片 6"></image-slot></figure>
     </div>
   </section>
 
-  <section data-page="about">
+  <section id="about" data-page="about">
     <span style="display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1e429f;margin:0 0 16px">08 — <span data-l="zh">关于我</span><span data-l="en">About</span></span>
     <div data-r="split" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,220px);gap:clamp(28px,4vw,56px);align-items:start">
       <div>
@@ -608,18 +574,18 @@
           </div>
           <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;padding:16px 0;border-bottom:1px solid rgba(23,28,38,.13)">
             <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;color:rgba(23,28,38,.5)">BEFORE</span>
-            <span style="font-size:16px;line-height:1.6"><span data-l="zh">这一行换成你的工作经历</span><span data-l="en">Replace this line with your work history</span></span>
+            <span style="font-size:16px;line-height:1.6"><span data-l="zh">过往经历，慢慢补全。</span><span data-l="en">More of the story to come.</span></span>
           </div>
           <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;padding:16px 0;border-bottom:1px solid rgba(23,28,38,.13)">
             <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;color:rgba(23,28,38,.5)">TOOLS</span>
             <span style="font-size:16px;line-height:1.6">Swift · SwiftUI · Python · Figma</span></div>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(28px,3.5vw,40px)">
-          <a class="btn btn-primary" href="mailto:hello@example.com"><span data-l="zh">写信给我</span><span data-l="en">Email me</span></a>
-          <a class="btn btn-ghost" href="#">GitHub</a>
+          <span class="contact-pending"><span data-l="zh">邮箱暂未公开</span><span data-l="en">Email coming soon</span></span>
+          <a class="btn btn-ghost" href="https://github.com/Alice314159" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
-      <figure style="margin:0"><image-slot id="about-portrait" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="放一张你的照片"></image-slot></figure>
+      <figure style="margin:0"><image-slot id="about-portrait" shape="rect" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="Portrait" data-placeholder-en="Portrait" data-placeholder-zh="放一张你的照片"></image-slot></figure>
     </div>
   </section>
 
@@ -630,75 +596,6 @@
 </div>
 </main>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{}">
-const ROUTES = ["home","products","quant","podcast","video","writing","poems","life","about"];
 
-class Component extends DCLogic {
-  state = { lang: "zh", music: "off" };
-
-  componentDidMount() {
-    // no track dropped in yet → the control says so instead of failing on click
-    fetch("assets/ambient.mp3", { method: "HEAD" })
-      .then(r => { if (!r.ok) this.setState({ music: "missing" }); })
-      .catch(() => this.setState({ music: "missing" }));
-    this.syncRoute();
-    this._onHash = () => this.syncRoute();
-    window.addEventListener("hashchange", this._onHash);
-    let saved = null;
-    try { saved = localStorage.getItem("wcab-lang"); } catch (e) {}
-    const lang = saved === "en" ? "en" : "zh";
-    document.documentElement.setAttribute("data-lang", lang);
-    if (lang !== this.state.lang) this.setState({ lang });
-  }
-
-  componentWillUnmount() {
-    if (this._onHash) window.removeEventListener("hashchange", this._onHash);
-  }
-
-  syncRoute() {
-    const h = (location.hash || "").replace("#", "");
-    const current = document.documentElement.getAttribute("data-route");
-    // placeholder href="#" links leave an empty hash — keep the page the reader is on
-    if (!h && current) return;
-    const route = ROUTES.indexOf(h) >= 0 ? h : current || "home";
-    document.documentElement.setAttribute("data-route", route);
-    window.scrollTo(0, 0);
-  }
-
-  renderVals() {
-    const lang = this.state.lang;
-    const zh = lang === "zh";
-    const music = this.state.music || "off"; // off | on | missing
-    return {
-      musicGlyph: music === "missing" ? "♪" : music === "on" ? "‖" : "▶",
-      musicOpacity: music === "missing" ? 0.4 : 1,
-      musicLabel: music === "missing"
-        ? (zh ? "背景音乐（待添加）" : "Music (not added yet)")
-        : music === "on"
-          ? (zh ? "暂停背景音乐" : "Pause music")
-          : (zh ? "播放背景音乐" : "Play music"),
-      musicDisabled: music === "missing",
-      toggleMusic: () => {
-        const el = document.getElementById("ambient");
-        if (!el || this.state.music === "missing") return;
-        if (this.state.music === "on") { el.pause(); this.setState({ music: "off" }); return; }
-        el.volume = 0.35;
-        const p = el.play();
-        if (p && p.catch) p.catch(() => this.setState({ music: "missing" }));
-        this.setState({ music: "on" });
-      },
-      langLabel: lang === "zh" ? "EN" : "中文",
-      toggleLang: () => {
-        const next = lang === "zh" ? "en" : "zh";
-        document.documentElement.setAttribute("data-lang", next);
-        try { localStorage.setItem("wcab-lang", next); } catch (e) {}
-        this.setState({ lang: next });
-      }
-    };
-  }
-}
-
-</script>
 </body>
 </html>
