@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title">
+  <title id="title">voCut</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3835f5"/>
+      <stop offset=".52" stop-color="#11147c"/>
+      <stop offset="1" stop-color="#080722"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#65ffd0"/>
+      <stop offset="1" stop-color="#32dfb1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="190" fill="url(#bg)"/>
+  <g fill="#fff">
+    <rect x="150" y="412" width="64" height="200" rx="32"/>
+    <rect x="245" y="320" width="64" height="384" rx="32"/>
+    <rect x="340" y="386" width="64" height="252" rx="32"/>
+    <rect x="620" y="470" width="64" height="166" rx="32"/>
+    <rect x="715" y="444" width="64" height="218" rx="32"/>
+    <rect x="810" y="478" width="64" height="170" rx="32"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-width="42">
+    <path d="m424 704 108-178"/>
+    <path d="m592 459 84-143"/>
+  </g>
+  <path d="M512 414c19 57 37 79 94 98-57 19-75 37-94 94-19-57-37-75-94-94 57-19 75-41 94-98Z" fill="url(#spark)"/>
+</svg>
