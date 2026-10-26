@@ -59,6 +59,8 @@ html:not([data-route]) [data-nav="home"] {
 }
 
 [hidden] { display:none !important; }
+.portfolio-video { display:block; width:100%; aspect-ratio:16/9; object-fit:cover;
+  border-radius:8px; background:#111; }
 [data-lang-toggle] { margin-left:auto; }
 [data-unavailable] { opacity:.55; cursor:default; }
 img[data-hover]:hover { transform:scale(1.04); }
