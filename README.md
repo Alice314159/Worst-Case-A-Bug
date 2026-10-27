@@ -2,70 +2,80 @@
 
 A bilingual static personal website for GitHub Pages. No build step is required.
 
-## Structure
+## Pages
 
-- `index.html` — all nine sections and bilingual content
-- `css/style.css` — layout, responsive navigation, and language visibility
-- `js/site.js` — hash routing, active navigation, titles, and language preferences
-- `js/image-slot.js` — image placeholders
-- `assets/` — images and icons
-- `css/base.css` — shared typography, colors, and UI components
+- `index.html` — compact homepage with selected work and links
+- `products.html` — project cards with platform filters
+- `products/*.html` — 15 standalone product detail pages with features and previews
+- `quant.html` — quant research notes
+- `podcast.html` — podcast episode archive and audio players
+- `writing.html` — short essay index
+- `essays/*.html` — three individual bilingual reading pages
+- `poems.html` — illustrated poetry collection
+- `poems/*.html` — two individual poem reading pages
+- `journal.html` — video and travel, with `#film` and `#trails` anchors
+- `about.html` — background, approach and contact links
+- `projects/index.html` — compatibility redirect to the product catalog
+
+Every page includes its own content, shared navigation and relative asset links.
+Pages work with GitHub Pages repository subdirectories and direct file browsing.
+The HTML files are maintained directly. When changing shared navigation, update
+all page headers. Shared appearance and behavior live in `css/` and `js/`.
 
 ## Navigation and language
 
-Sections use `#home`, `#products`, `#quant`, `#podcast`, `#video`, `#writing`,
-`#poems`, `#life`, and `#about`. Direct links, reloads, and browser back/forward
-use the same routing logic. Empty or unknown hashes show the home section.
+Navigation uses normal page links, supporting refresh, bookmarks and browser
+back/forward. Product features and screenshots live on detail pages rather than
+expanding the catalog. The first language is English; the language button saves
+the preference across pages when local storage is available. The skip link,
+keyboard focus indicators and reduced-motion support are retained.
 
-The initial language is English. The language button switches between English
-and Chinese and saves the preference when local storage is available.
+`js/legacy-routes.js` redirects former homepage links such as `/#products`,
+`/#video` and `/#poem-rings-of-time` to the corresponding new pages. The script
+runs only on the homepage. `js/site.js` manages language, platform filtering,
+active navigation and poem motion controls; it no longer switches page content.
 
-Only `index.html` is maintained; old page exports and redirect entries have been removed.
-Relative paths support GitHub Pages repository subdirectories and opening
-`index.html` directly from disk.
+## Assets and content
 
-Unconfigured repository and episode links are displayed as unavailable text.
-Replace them with real destinations when available. The email contact is marked as unavailable until a real address is supplied; some
-content and image slots are still pending. The missing background music control is omitted.
+`assets/icons/` contains app icons; `assets/projects/` contains project artwork;
+`assets/poems/` contains poem illustrations; `assets/podcast/` contains cover art;
+`assets/uploads/` contains user images; `assets/videos/` contains the short film.
 
-## Browsing improvements
+Travel and About use captioned existing artwork until personal photographs are
+supplied. Unconfigured repository links and contact details remain marked as
+unavailable. The essays are three short bilingual notes on building tools,
+reviewing research and protecting attention.
 
-Products can be filtered by iOS or desktop. Mobile navigation stays visible and
-keeps the active section in view. Keyboard users can skip to the main content;
-section changes focus the new heading. Animations respect reduced-motion settings.
+## Videos
 
-## Local preview
-
-```bash
-python3 -m http.server 8000
-```
-
-Open `http://localhost:8000`. To deploy on GitHub Pages, select the `main` branch
-and `/ (root)` directory in the repository's Pages settings.
+Place videos and matching posters in `assets/videos/`. Use native `<video
+controls playsinline preload="metadata">` with a poster and `<source>` in
+`journal.html`. The site is static; commit media with the HTML for hosting.
+`<image-slot>` accepts images only, not video playback.
 
 ## Podcast RSS
 
-The archive shows all supplied episodes, newest first, with a compact header,
-full-width rows, expandable notes, and audio controls. `js/podcast-data.js`
-bundles 24 real episodes so RSS CORS failures do not leave the page empty.
-A live RSS request refreshes the archive when the podcast section opens.
-At 30 or more episodes with multiple RSS seasons, season filters appear;
-unassigned episodes remain available. Episode titles are preserved as published.
+`js/podcast-data.js` bundles 24 supplied episodes, newest first. Only
+`podcast.html` loads the podcast scripts. A live RSS request refreshes the
+archive; bundled episodes remain available if the request fails. Audio requires
+network access. Notes expand on demand; season filters appear at 30 or more
+episodes with multiple seasons.
 
-Refresh the bundled data before publishing (Python standard library only):
+Refresh the snapshot using the Python standard library:
 
 ```bash
 python3 scripts/update_podcast.py
 ```
 
-You can also pass a downloaded RSS XML path. A failed or empty response leaves
-existing data intact. Commit the updated `js/podcast-data.js` with the website.
-The snapshot needs this refresh when live requests are blocked. Audio playback
-still needs network access. The RSS URL is in `index.html` and the update script.
+A downloaded RSS XML path can also be passed. Failed or empty responses leave
+existing data intact. Commit the updated data file with the site.
 
-## Poetry collection
+## Local preview and deployment
 
-`#poems` displays two illustrated covers. The complete poems have shareable
-reading views at `#poem-rings-of-time` and `#poem-mooncake-waiting`.
-Each view includes collection and adjacent-poem links, with browser history
-support. The reading column is capped at 600px; covers stack on small screens.
+```bash
+python3 -m http.server 8000
+```
+
+Open `http://localhost:8000`. For GitHub Pages, select the `main` branch and the
+repository root in Pages settings. Publish the complete directory tree so that
+nested product, poem and essay links resolve.
