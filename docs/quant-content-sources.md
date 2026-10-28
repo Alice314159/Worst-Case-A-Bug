@@ -49,3 +49,12 @@ This update does not verify runtime behavior or production status.
 - parquet_view/README.md — links to the existing ParquetViewer product page
 
 Empty scaffold folders and unrelated video-editing material were omitted.
+
+## Design studies and icon system
+
+Eight editable SVG icons live in `assets/quant/`. Detail pages include process
+notes and static bilingual interface concepts, clearly separated from running
+screenshots. Existing interface information was reviewed in fetch_data/web.html,
+etf_rotation/tools/train_ui.py, etf_monitor pipeline templates and HMM3.0 report
+templates. The portfolio studies reorganize those capabilities and the documented
+research workflows; they do not claim new functionality has been implemented.

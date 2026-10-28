@@ -101,3 +101,15 @@ people or locations. WebP files are lossless encodings of the generated images.
 RSS snapshot, so refreshing the feed does not discard the mapping. Unmapped or
 failed images fall back to the show cover. Covers load lazily after the first two
 rows; on narrow screens they appear above the episode text.
+
+## Local analytics dashboard
+
+Run `npm run analytics` with the installed Node.js 26, then open
+`http://127.0.0.1:8788/admin/`. The startup log shows the local admin-key file.
+The dashboard shows page views, daily sessions, trends, top pages, approximate
+location fields, referring sites and device/browser summaries. Local geography
+remains Unknown. The frontend production endpoint is configured for the Cloudflare
+Worker at https://wcab-analytics.worstcaseabug.workers.dev; publishing the frontend
+update enables online collection.
+Keys and data are kept outside the website root. See `analytics/README.md` for
+storage, privacy definitions, startup, backup and production limitations.

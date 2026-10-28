@@ -1,1 +1,25 @@
+# OS and dependency files
 .DS_Store
+node_modules/
+npm-debug.log*
+
+# Private keys and local environment settings
+secret/
+secrets/
+.secrets/
+ADMIN_TOKEN
+ADMIN_TOKEN.txt
+VISITOR_SALT
+VISITOR_SALT.txt
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+
+# Local Cloudflare files and analytics data
+.wrangler/
+analytics/.local/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

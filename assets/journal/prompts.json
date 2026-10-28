@@ -1,0 +1,13 @@
+{
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "file": "yosemite.png",
+      "prompt": "Use case: illustration-story. Asset: landscape park illustration for a personal hiking journal. Refined watercolor and gouache on cream textured paper, muted sage, ochre and terracotta, warm natural light, coherent with a literary travel journal. Broad landscape framing. No people, no text, no numbers, no logos, no watermark. Illustrative interpretation, not a photograph or literal route guide. Scene: Yosemite Valley in California, massive pale granite cliffs, a distant waterfall and deep green conifer trees beside the Merced River, a small footbridge over clear flowing water. Park-inspired landscape, not a navigational route map."
+    },
+    {
+      "file": "grand-canyon.png",
+      "prompt": "Use case: illustration-story. Asset: landscape park illustration for a personal hiking journal. Refined watercolor and gouache on cream textured paper, muted sage, ochre and terracotta, warm natural light, coherent with a literary travel journal. Broad landscape framing. No people, no text, no numbers, no logos, no watermark. Illustrative interpretation, not a photograph or literal route guide. Scene: Grand Canyon South Rim in Arizona, layered ochre and terracotta canyon walls receding into a blue and cream horizon, a small winding footpath on the foreground ridge, wide open landscape. Park-inspired landscape, not a route map."
+    }
+  ]
+}
