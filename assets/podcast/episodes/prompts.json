@@ -1,0 +1,126 @@
+{
+  "mode": "built-in image_gen",
+  "style": "Use case: illustration-story. Asset type: square podcast episode cover for a warm personal website. Style: refined hand-painted watercolor and gouache editorial illustration, soft paper grain, muted sage green, warm cream, ochre, dusty terracotta, softly defined forms, cohesive quiet travel-journal aesthetic. Composition: one clear focal scene, readable at 160px, balanced square framing. No lettering, text, numbers, logos, borders, watermarks, photographic realism or UI. People, if any, are anonymous impressionistic figures. This is an illustrative interpretation, not documentary evidence. Scene: ",
+  "episodes": [
+    {
+      "title": "E23｜毕业典礼上的“局外人”：记一次没有学位证的观礼体验",
+      "file": "assets/podcast/episodes/e23-graduation.webp",
+      "scene": "A quiet university graduation ceremony, rows of seated graduates in dark gowns, a visitor watching from the edge under leafy trees, warm afternoon light."
+    },
+    {
+      "title": "E22|带着牛肉丸子去对线：第一次参加老美家的 Thanksgiving Potluck",
+      "file": "assets/podcast/episodes/e22-potluck.webp",
+      "scene": "A welcoming American Thanksgiving potluck table, a ceramic bowl of Chinese beef meatballs among autumn dishes, friends' hands setting down plates, no visible faces."
+    },
+    {
+      "title": "E21｜床垫漏气的夜里，我在 Big Bend 看见了满天银河",
+      "file": "assets/podcast/episodes/e21-big-bend.webp",
+      "scene": "A small camping tent in the Big Bend desert at night, immense Milky Way above rugged mountains and sparse desert plants, quiet wonder."
+    },
+    {
+      "title": "🎧 E20｜德州州立公园记：蓝帽花、鳄鱼沼泽和偷香肠的犰狳",
+      "file": "assets/podcast/episodes/e20-texas-parks.webp",
+      "scene": "A Texas state park campsite with bluebonnet flowers in the foreground, a little armadillo beside a picnic table, distant calm wetland, no dangerous animal encounter."
+    },
+    {
+      "title": "🎧 E19｜F2 的医疗开荒：预约排到明年，我还遇到了一位 Whatever 医生",
+      "file": "assets/podcast/episodes/e19-appointment.webp",
+      "scene": "A quiet medical waiting room with empty chairs, a wall calendar with abstract unlettered blocks, a phone and notebook on a seat, soft window light."
+    },
+    {
+      "title": "E18 第一次在美国看病：35刀，聊了将近一个小时的消化科专家",
+      "file": "assets/podcast/episodes/e18-doctor.webp",
+      "scene": "A calm consultation room, two empty chairs facing across a desk with a stethoscope, a glass of water, warm respectful atmosphere, no medical procedures."
+    },
+    {
+      "title": "🎧 E17｜冬季寒假，开着老凯美瑞去了休斯顿航天中心",
+      "file": "assets/podcast/episodes/e17-space-center.webp",
+      "scene": "A visitor looking up at a tall weathered space rocket in an outdoor museum courtyard, a small moon rock in a nearby display suggested in the foreground, sense of curiosity."
+    },
+    {
+      "title": "🎧 E16｜车买到了，但我还得继续跑 title 和 registration",
+      "file": "assets/podcast/episodes/e16-registration.webp",
+      "scene": "A car key and blank vehicle paperwork resting on a wooden desk, a modest older sedan visible through the window, paperwork as a small everyday journey."
+    },
+    {
+      "title": "🎧 E15｜新手司机买车险：比车还让人肉疼的隐藏 Boss",
+      "file": "assets/podcast/episodes/e15-car-insurance.webp",
+      "scene": "A little older sedan sheltered under an abstract translucent umbrella, car keys and blank insurance papers in the foreground, thoughtful quiet still life."
+    },
+    {
+      "title": "🎧 E14｜十三年老凯美瑞：一次爆胎，撕开了二手车的隐藏剧情",
+      "file": "assets/podcast/episodes/e14-old-camry.webp",
+      "scene": "An older silver sedan parked safely beside a quiet road in warm afternoon light, a spare tire and tools nearby, everyday resilience, no accident."
+    },
+    {
+      "title": "🎧 E13｜路考三次才过：一个刹车灯，一个 Stop Sign，把我打回两次",
+      "file": "assets/podcast/episodes/e13-driving-test.webp",
+      "scene": "A learner's car stopped safely at a red octagonal stop sign with NO LETTERING, quiet suburban intersection, a clipboard and car keys in foreground."
+    },
+    {
+      "title": "E12｜第一次去 DMV，坐公交去考驾照",
+      "file": "assets/podcast/episodes/e12-dmv-bus.webp",
+      "scene": "A city bus at a sunny suburban stop, a person holding a blank appointment folder, low civic building in distance, first journey to a driving-license office."
+    },
+    {
+      "title": "🎧 E11｜带刀去 Wolf Pen Creek，结果被松鼠给包围了",
+      "file": "assets/podcast/episodes/e11-wolf-pen.webp",
+      "scene": "A peaceful wooded creek path, a squirrel holding an acorn on a tree root and a small rabbit in the grass, sunlight filtering through leaves."
+    },
+    {
+      "title": "🎧 E10｜40岁，三个孩子，还在读博士：我的 ESL 老师给我上的一课",
+      "file": "assets/podcast/episodes/e10-esl-teacher.webp",
+      "scene": "An inviting adult English classroom, teacher gesturing beside a blank chalkboard, diverse adult students around a table, a few small treats and notebooks, gentle lively energy."
+    },
+    {
+      "title": "E09｜老师没有让我介绍自己，而是介绍别人",
+      "file": "assets/podcast/episodes/e09-introductions.webp",
+      "scene": "Two adult language learners sitting opposite each other at a classroom table, open notebooks and attentive posture, soft afternoon light, anonymous impressionistic faces."
+    },
+    {
+      "title": "E08｜四六级都过了，ESL 却从 Level 1 开始",
+      "file": "assets/podcast/episodes/e08-placement.webp",
+      "scene": "A desk with a blank language placement worksheet and pencil, an open classroom doorway beyond it, morning light and the feeling of starting again."
+    },
+    {
+      "title": "E07｜搭档多问了一句，我的新世界就打开了",
+      "file": "assets/podcast/episodes/e07-discovery.webp",
+      "scene": "An international community coffee gathering, diverse people talking around a table with coffee cups and unlettered flyers, comfortable sunlit room, human connection."
+    },
+    {
+      "title": "E06｜蹭上校车，去参加开学典礼",
+      "file": "assets/podcast/episodes/e06-campus-bus.webp",
+      "scene": "A campus shuttle bus parked beside a university green, students gathering for a welcoming outdoor celebration, soft golden light, no logos or readable signs."
+    },
+    {
+      "title": "E05｜F1上学了，F2呢？",
+      "file": "assets/podcast/episodes/e05-f2-life.webp",
+      "scene": "A quiet desk beside a window, a backpack leaving through an open doorway suggested in distance, an open notebook and a warm cup of tea left at home, reflective new beginning."
+    },
+    {
+      "title": "E04|我在HEB超市，当了文盲",
+      "file": "assets/podcast/episodes/e04-grocery.webp",
+      "scene": "A newcomer standing in a spacious Texas grocery aisle comparing an unlabelled milk carton and a bottle of soy sauce, warm ordinary colors, no logos or readable packaging."
+    },
+    {
+      "title": "放着国内的舒服不享，来美国睡地板？",
+      "file": "assets/podcast/episodes/e03-empty-apartment.webp",
+      "scene": "A nearly empty new apartment at night, a simple blanket and pillow on a wooden floor, cardboard boxes, a phone glowing softly, cool moonlight balanced by a warm lamp."
+    },
+    {
+      "title": "人均20刀的汉堡，给我上了第一堂美国消费课",
+      "file": "assets/podcast/episodes/e02-burger.webp",
+      "scene": "A burger and fries on a diner table beside a long blank receipt and coins, soft Texas evening light, wry gentle still life, no readable prices."
+    },
+    {
+      "title": "欢迎来到新手村：德州热浪与等级清零",
+      "file": "assets/podcast/episodes/e01-texas-arrival.webp",
+      "scene": "A rolling suitcase beside an airport exit opening onto a Texas road under a vast hot sky, palms and heat shimmer, warm ochre and soft sage, new arrival."
+    },
+    {
+      "title": "人生重启之后，我决定录一档播客",
+      "file": "assets/podcast/episodes/e00-first-microphone.webp",
+      "scene": "A small podcast microphone on a home desk beside a notebook and headphones, dusk through the window, the beginning of telling a story, warm intimate light."
+    }
+  ]
+}

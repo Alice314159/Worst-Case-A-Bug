@@ -57,6 +57,24 @@
       control.querySelector('[data-l="en"]').textContent = paused ? 'Play motion' : 'Pause motion';
     });
   }));
+  document.querySelectorAll('[data-copy-email]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const status = document.querySelector('.contact-status');
+      try {
+        await navigator.clipboard.writeText(button.dataset.copyEmail);
+        status.textContent = '';
+        clearTimeout(button.copyResetTimer);
+        button.querySelector('[data-l="zh"]').textContent = '已复制';
+        button.querySelector('[data-l="en"]').textContent = 'Copied';
+        button.copyResetTimer = setTimeout(() => {
+          button.querySelector('[data-l="zh"]').textContent = '复制邮箱';
+          button.querySelector('[data-l="en"]').textContent = 'Copy email';
+        }, 2000);
+      } catch {
+        status.textContent = root.dataset.lang === 'zh' ? '请选中上方邮箱地址复制。' : 'Please select and copy the email address above.';
+      }
+    });
+  });
   const activeLink = navigation.find(link => link.dataset.nav === route);
   if (activeLink && matchMedia('(max-width: 980px)').matches) {
     const nav = activeLink.parentElement;

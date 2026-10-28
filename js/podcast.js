@@ -67,8 +67,28 @@
         } else duration.textContent = item.duration;
         meta.append(duration);
       }
-      article.append(meta);
+      const visual = document.createElement('div');
+      visual.className = 'episode-visual';
+      const cover = document.createElement('img');
+      cover.className = 'episode-cover';
+      const artwork = window.podcastArtwork || {};
+      const entry = artwork[item.link] || artwork[item.title];
+      cover.src = entry || 'assets/podcast/podcast-cover.png';
+      cover.alt = '';
+      cover.width = 640;
+      cover.height = 640;
+      cover.loading = container.childElementCount < 2 ? 'eager' : 'lazy';
+      cover.decoding = 'async';
+      cover.addEventListener('error', () => {
+        if (!cover.dataset.fallback) {
+          cover.dataset.fallback = 'true';
+          cover.src = 'assets/podcast/podcast-cover.png';
+        }
+      });
+      visual.append(cover, meta);
+      article.append(visual);
       const body = document.createElement('div');
+      body.className = 'episode-body';
       const heading = document.createElement('h3');
       heading.textContent = item.title || 'Untitled episode';
       body.append(heading);

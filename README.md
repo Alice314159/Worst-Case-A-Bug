@@ -7,7 +7,8 @@ A bilingual static personal website for GitHub Pages. No build step is required.
 - `index.html` — compact homepage with selected work and links
 - `products.html` — project cards with platform filters
 - `products/*.html` — 15 standalone product detail pages with features and previews
-- `quant.html` — quant research notes
+- `quant.html` — Vesper quant project archive
+- `quant/*.html` — eight independent research project pages
 - `podcast.html` — podcast episode archive and audio players
 - `writing.html` — short essay index
 - `essays/*.html` — three individual bilingual reading pages
@@ -79,3 +80,24 @@ python3 -m http.server 8000
 Open `http://localhost:8000`. For GitHub Pages, select the `main` branch and the
 repository root in Pages settings. Publish the complete directory tree so that
 nested product, poem and essay links resolve.
+
+## Quantitative project archive
+
+The Vesper archive groups strategy/monitoring, data/tools, and models/sentiment.
+Related earlier iterations are listed under project lineage rather than as
+repeated cards. ParquetViewer links to its existing product detail page.
+`docs/quant-content-sources.md` records the documentation and source modules used.
+Only project descriptions are included; no account configuration, datasets or
+reported performance numbers are published. Runtime behavior was not revalidated
+as part of the website content update.
+
+## Podcast episode artwork
+
+All 24 bundled episodes have individually generated warm watercolor covers in
+`assets/podcast/episodes/`. `prompts.json` records the built-in image generation
+prompt set. The artwork illustrates episode themes rather than documenting real
+people or locations. WebP files are lossless encodings of the generated images.
+`js/podcast-artwork.js` maps artwork by episode URL and title independently of the
+RSS snapshot, so refreshing the feed does not discard the mapping. Unmapped or
+failed images fall back to the show cover. Covers load lazily after the first two
+rows; on narrow screens they appear above the episode text.
