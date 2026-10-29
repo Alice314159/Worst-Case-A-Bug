@@ -838,3 +838,9 @@ html[data-lang="zh"] .quant-featured .quant-card-copy h3 { font-size:22px; }
 .exploration-icon { display:flex; align-items:center; justify-content:center; height:135px; color:#8b9e79; }.exploration-icon svg { width:100px; height:100px; }.exploration-card:nth-child(2) .exploration-icon { color:#aa9575; }
 .exploration-card h3 { font-size:26px; margin:15px 0; }.exploration-card p:not(.eyebrow) { color:#78846c; font-size:14px; line-height:1.95; margin:0; }
 @media (max-width:600px) { .exploration-grid { grid-template-columns:1fr; }.exploration-card { padding:23px; }.exploration-icon { height:110px; } }
+
+.app-downloads { margin:28px 0 32px; padding:24px; border:1px solid #dce4d1; border-radius:10px; background:linear-gradient(125deg,#edf3e5,#f6f1e7); }
+.download-heading { display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center; margin-bottom:20px; }.download-heading h2 { font-size:23px; margin:0; }.download-version { color:#8c9d79; font-size:11px; }
+.download-files { display:grid; gap:16px; }.download-file { display:flex; align-items:center; flex-wrap:wrap; gap:15px; border-top:1px solid #d9e2cd; padding-top:17px; }.download-file > div { flex:1 1 180px; }.download-file strong { color:#546e44; font-size:15px; font-weight:500; }.download-file p { font-size:11px; color:#91a17d; margin:6px 0 0; line-height:1.8; }.download-file .studio-button { font-size:12px; white-space:nowrap; }
+.download-checksum { flex-basis:100%; font-size:10px; color:#8b9c77; }.download-checksum summary { cursor:pointer; }.download-checksum code { display:block; margin-top:8px; overflow-wrap:anywhere; }.download-notes { color:#81916c; font-size:12px; line-height:1.9; margin:20px 0 0; }
+@media(max-width:560px) { .app-downloads { padding:20px; }.download-file .studio-button { justify-content:center; width:100%; } }
