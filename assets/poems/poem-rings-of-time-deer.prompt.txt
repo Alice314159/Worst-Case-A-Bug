@@ -1,0 +1,3 @@
+Tool: built-in image_gen
+Edit target: poem-rings-of-time.png
+Prompt: Add exactly two deer, one adult doe and one smaller fawn, together in the sunlit clearing to the right of the fallen log in the middle distance. Match delicate watercolor brushwork, paper grain, muted sage palette and golden morning sunlight. Preserve the original 3:2 composition, tree-ring cross section, major trees, foliage and mist. Natural anatomy and grounded feet. No additional animals, text, border or watermark.

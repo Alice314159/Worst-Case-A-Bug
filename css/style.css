@@ -292,7 +292,7 @@ html[data-poem-motion="paused"] .poem-banner img { animation-play-state:paused; 
   --poem-paper:#f6f4eb;
   --poem-ink:#303c32;
   --poem-wash:rgba(108,131,96,.12);
-  --poem-art:url('../assets/poems/poem-rings-of-time.png');
+  --poem-art:url('../assets/poems/poem-rings-of-time-deer.png');
 }
 #poem-mooncake-waiting {
   --poem-paper:#f0f2f7;
@@ -592,7 +592,7 @@ html[data-lang="zh"] .about-intro { font-size:16px; line-height:2; }
 #home .podcast-feature { background:#f5efe6; border-color:#e7dfd2; }
 #home .writing-feature { background:#edf1e9; border-color:#dfe3d6; }
 #home .writing-feature .quote-art { position:relative; isolation:isolate; color:#364d35; }
-#home .writing-feature .quote-art::before { content:""; position:absolute; z-index:-1; inset:-8px -23px; background:linear-gradient(90deg,#edf1e9db,#edf1e999),url('../assets/poems/poem-rings-of-time.png') center/cover; mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent); }
+#home .writing-feature .quote-art::before { content:""; position:absolute; z-index:-1; inset:-8px -23px; background:linear-gradient(90deg,#edf1e9db,#edf1e999),url('../assets/poems/poem-rings-of-time-deer.png') center/cover; mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent); }
 .about-contact { padding:28px; border:1px solid #dfe3d6; border-radius:10px; background:linear-gradient(115deg,#eef3e8,#f6f0e6); }
 .contact-copy { flex:1 1 320px; }
 .contact-address { display:inline-block; margin-top:16px; color:#405d47; font-size:14px; overflow-wrap:anywhere; }
