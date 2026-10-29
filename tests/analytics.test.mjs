@@ -121,3 +121,9 @@ test('cloud adapter exposes only its explicit admin asset paths', async () => {
   const pending = []; await worker.scheduled({}, env, { waitUntil(promise) { pending.push(promise); } }); await Promise.all(pending);
   db.close();
 });
+
+test('admin asset configuration disables index.html canonical redirects', () => {
+  const config = readFileSync(new URL('../analytics/wrangler.toml', import.meta.url), 'utf8');
+  const assets = config.split('[assets]')[1].split('[vars]')[0];
+  assert.match(assets, /html_handling\s*=\s*"none"/);
+});

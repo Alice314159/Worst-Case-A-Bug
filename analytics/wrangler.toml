@@ -8,6 +8,8 @@ workers_dev = true
 directory = "../admin"
 binding = "ASSETS"
 run_worker_first = true
+# Worker maps /admin/ to /index.html; prevent canonical HTML redirects back to /.
+html_handling = "none"
 
 [vars]
 # Replace with your actual public website origin (no path, no trailing slash).
