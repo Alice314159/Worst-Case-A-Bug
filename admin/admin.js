@@ -49,7 +49,7 @@
   }
   async function load() {
     if (busy) return;
-    if (base === undefined || (!local && !base)) { $('#login-error').textContent = '线上统计服务尚未配置，请先使用本地后台。'; return; }
+    if (base === undefined || (!local && !cloud && !base)) { $('#login-error').textContent = '线上统计服务尚未配置，请先使用本地后台。'; return; }
     busy = true;
     const id = ++requestID; $('#refresh').disabled = true; $('#login-button').disabled = true;
     $('#dashboard-status').textContent = '正在读取统计…'; $('#login-error').textContent = '';

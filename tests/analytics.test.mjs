@@ -127,3 +127,24 @@ test('admin asset configuration disables index.html canonical redirects', () => 
   const assets = config.split('[assets]')[1].split('[vars]')[0];
   assert.match(assets, /html_handling\s*=\s*"none"/);
 });
+
+test('cloud admin submits to same-origin API instead of rejecting empty base URL', async () => {
+  const elements = new Map(); let fetched = false, formHandler;
+  const element = selector => {
+    if (!elements.has(selector)) elements.set(selector, { textContent: '', value: selector === '#days' ? '7' : selector === '#access-key' ? 'test-only-key' : '', hidden: false, disabled: false,
+      addEventListener(name, callback) { if (selector === '#login-form' && name === 'submit') formHandler = callback; }
+    });
+    return elements.get(selector);
+  };
+  const context = {
+    location: { hostname: 'analytics.example', port: '' },
+    document: { documentElement: { dataset: { cloudAnalytics: 'true', siteHome: 'https://example.org/' } }, querySelector: element, querySelectorAll: () => [] },
+    window: {}, Intl, URL,
+    fetch: async url => { assert.equal(url, '/api/admin/stats?days=7'); fetched = true; return { ok: false, status: 401 }; }
+  };
+  vm.runInNewContext(readFileSync(new URL('../admin/admin.js', import.meta.url), 'utf8'), context);
+  formHandler({ preventDefault() {} });
+  await new Promise(resolve => setImmediate(resolve));
+  assert(fetched, 'Cloud mode must call its same-origin API');
+  assert.match(element('#login-error').textContent, /管理密钥不正确/);
+});
