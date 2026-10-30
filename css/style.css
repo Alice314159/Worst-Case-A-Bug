@@ -844,3 +844,17 @@ html[data-lang="zh"] .quant-featured .quant-card-copy h3 { font-size:22px; }
 .download-files { display:grid; gap:16px; }.download-file { display:flex; align-items:center; flex-wrap:wrap; gap:15px; border-top:1px solid #d9e2cd; padding-top:17px; }.download-file > div { flex:1 1 180px; }.download-file strong { color:#546e44; font-size:15px; font-weight:500; }.download-file p { font-size:11px; color:#91a17d; margin:6px 0 0; line-height:1.8; }.download-file .studio-button { font-size:12px; white-space:nowrap; }
 .download-checksum { flex-basis:100%; font-size:10px; color:#8b9c77; }.download-checksum summary { cursor:pointer; }.download-checksum code { display:block; margin-top:8px; overflow-wrap:anywhere; }.download-notes { color:#81916c; font-size:12px; line-height:1.9; margin:20px 0 0; }
 @media(max-width:560px) { .app-downloads { padding:20px; }.download-file .studio-button { justify-content:center; width:100%; } }
+
+/* Mathematical notes retain the site's paper and sage palette. */
+.quant-formulas { margin:64px 0; scroll-margin-top:30px; }
+.quant-formulas > h2 { font-size:clamp(25px,3vw,34px); margin:12px 0 18px; }
+.formula-intro,.formula-card p { color:#66745f; font-size:14px; line-height:1.95; }
+.formula-grid { display:grid; gap:18px; margin-top:28px; }
+.formula-card { position:relative; padding:26px; background:linear-gradient(120deg,#f0f3eae8,#faf7f0); border:1px solid #dce3d4; border-radius:12px; min-width:0; }
+.formula-number { color:#8c9d79; font-size:11px; letter-spacing:.12em; }
+.formula-card h3 { font-size:20px; margin:9px 0 18px; }
+.formula-equation { font-family:"STIX Two Math","Cambria Math","Times New Roman",serif; font-size:clamp(17px,2vw,22px); line-height:2; white-space:pre; overflow-x:auto; padding:14px 16px; color:#36523d; background:#ffffff99; border-left:3px solid #a3b28c; border-radius:3px; }
+.formula-equation:focus-visible { outline:2px solid #718565; outline-offset:3px; }
+.formula-card p { margin:18px 0 0; }
+.formula-source { font-size:12px; line-height:1.8; color:#78846c; margin-top:20px; }
+@media(max-width:600px) { .formula-card { padding:20px 16px; }.quant-formulas { margin:44px 0; }.formula-equation { padding:12px; } }
