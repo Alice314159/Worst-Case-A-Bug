@@ -858,3 +858,25 @@ html[data-lang="zh"] .quant-featured .quant-card-copy h3 { font-size:22px; }
 .formula-card p { margin:18px 0 0; }
 .formula-source { font-size:12px; line-height:1.8; color:#78846c; margin-top:20px; }
 @media(max-width:600px) { .formula-card { padding:20px 16px; }.quant-formulas { margin:44px 0; }.formula-equation { padding:12px; } }
+
+/* Three distinct visual chapters for the ETF workflow. */
+.rotation-workflow { background:radial-gradient(ellipse at 5% 0%,#e6eddf 0%,transparent 46%),radial-gradient(ellipse at 100% 70%,#eee7d859,transparent 50%),#f7f7f0; }
+.rotation-story { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; margin:28px 0 18px; }
+.rotation-scene { min-width:0; padding:19px 17px 23px; background:#ffffff80; border:1px solid #d9e2d1; border-radius:12px; }
+.rotation-scene:nth-child(2) { background:#f8f2e780; border-color:#e2d8c5; }.rotation-scene:nth-child(3) { background:#edf3eea8; border-color:#d2dfd8; }
+.rotation-scene-top { display:flex; align-items:center; justify-content:space-between; gap:8px; color:#7b8f6a; font-size:12px; }.rotation-stage { font-size:8px; letter-spacing:.11em; color:#94a088; }
+.rotation-scene svg { display:block; width:100%; height:auto; margin:10px auto 12px; }
+.rotation-scene h3 { font-size:17px; line-height:1.5; color:#435b41; margin:0 0 10px; }.rotation-scene p { font-size:12px; line-height:1.85; color:#7b8771; margin:0; }
+.rotation-method-note { display:flex; align-items:center; gap:12px; padding:2px 4px 20px; }.rotation-note-mark { color:#a59b7c; font-size:22px; }.rotation-method-note p { margin:0; color:#8b9481; font-size:11px; line-height:1.8; }
+.rotation-workflow .diagram-flow { counter-reset:stage; margin-top:10px; gap:8px; }.rotation-workflow .diagram-flow li { border:0; border-radius:7px; background:#e8eddfb0; padding:13px 10px; font-size:11px; }.rotation-workflow .diagram-flow li:nth-child(2),.rotation-workflow .diagram-flow li:last-child { background:#eee8dbb0; }
+@media(max-width:680px) { .rotation-story { grid-template-columns:1fr; gap:12px; }.rotation-scene { display:grid; grid-template-columns:105px minmax(0,1fr); column-gap:16px; padding:18px; }.rotation-scene-top { grid-column:1/-1; margin-bottom:8px; }.rotation-scene svg { grid-column:1; grid-row:2/4; align-self:center; margin:0; }.rotation-scene h3 { grid-column:2; font-size:16px; margin:4px 0 7px; }.rotation-scene p { grid-column:2; font-size:12px; }.rotation-workflow .diagram-flow { grid-template-columns:1fr; }.rotation-workflow .diagram-flow li { padding:10px 14px; } }
+.rotation-scene svg { color:#82966f; }
+.rotation-scene:nth-child(2) svg { color:#a5946e; }
+.rotation-scene:nth-child(3) svg { color:#78958a; }
+.rotation-scene svg text { fill:currentColor; stroke:none; text-anchor:middle; font:12px Georgia,serif; }
+
+.research-reading { margin:56px 0; padding-top:32px; border-top:1px solid #dbe2d1; scroll-margin-top:35px; }
+.reading-heading { max-width:620px; }.reading-heading h2 { font-size:clamp(25px,3vw,32px); line-height:1.5; margin:12px 0 16px; }.reading-heading > p:last-child { color:#7b8771; font-size:13px; line-height:1.9; }
+.reading-io { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:28px; margin:30px 0 36px; }.reading-io article { padding:25px; background:#edf1e6; border-radius:4px 20px 4px 4px; border-top:3px solid #adbd99; }.reading-io article:last-child { background:#f1ece1; border-color:#c5b48e; }.reading-io h3 { font-size:20px; margin:12px 0; }.reading-io p { font-size:13px; line-height:1.95; color:#748168; margin:0; }.reading-connector { position:absolute; left:50%; top:40%; transform:translateX(-50%); border-radius:50%; background:#faf9f5; border:1px solid #dce3d4; width:34px; height:34px; display:grid; place-items:center; color:#8a9b79; }
+.reading-questions > .eyebrow { margin-bottom:15px; }.reading-questions details { border-top:1px solid #dce3d4; }.reading-questions details:last-child { border-bottom:1px solid #dce3d4; }.reading-questions summary { display:flex; align-items:baseline; gap:16px; padding:22px 0; cursor:pointer; font-size:17px; color:#4d6545; list-style:none; }.reading-questions summary::-webkit-details-marker { display:none; }.reading-index { font-size:11px; color:#a29270; }.reading-toggle { margin-left:auto; color:#8c9e7b; font-size:20px; }.reading-questions details[open] .reading-toggle { transform:rotate(45deg); }.reading-questions details > p { margin:0 30px 25px; max-width:660px; color:#78846c; font-size:13px; line-height:2; }.reading-questions summary:focus-visible { outline:2px solid #839b70; outline-offset:4px; }
+@media(max-width:600px) { .reading-io { grid-template-columns:1fr; gap:16px; }.reading-connector { top:50%; transform:translate(-50%,-50%) rotate(45deg); }.reading-questions summary { font-size:16px; gap:12px; }.reading-questions details > p { margin-left:24px; margin-right:8px; } }
