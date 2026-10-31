@@ -14,7 +14,7 @@ def render():
  soup.html['data-draft-description-zh']=ZH['intro'];soup.html['data-draft-description-en']=EN['intro']
  soup.title.string='红杉树下 · 未录制文稿';soup.select_one('meta[name="description"]')['content']=ZH['intro']
  for node in soup.select('[aria-current]'):del node['aria-current']
- soup.select_one('a[data-nav="podcast"]')['aria-current']='page'
+ soup.select_one('a[data-nav="stories"]')['aria-current']='true'
  for node in soup.select('[href],[src]'):
   for attr in ['href','src']:
    value=node.get(attr,'')
@@ -27,7 +27,7 @@ def render():
   body+='<details class="draft-episode" id="ep-'+z['number']+'"><summary><span class="draft-episode-number">EP '+z['number']+'</span><span><h2>'+bi(z['title'],e['title'])+'</h2><p>'+bi(z['summary'],e['summary'])+'</p></span><span class="draft-episode-plus" aria-hidden="true">+</span></summary><div class="draft-script"><div class="draft-script-context"><p><strong>'+bi('这一集的问题','The question')+'</strong> '+bi(z['question'],e['question'])+'</p><p><strong>'+bi('建议音效','Sound direction')+'</strong> '+bi(z['sound'],e['sound'])+'</p></div>'
   for photo in PHOTOS:
    if z['number'] not in photo['episodes']:continue
-   body+='<figure class="draft-episode-photo"><a href="../assets/podcast/redwoods/'+photo['file']+'" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="../assets/podcast/redwoods/'+photo['file']+'" alt="'+esc(photo['captionZh'])+'" data-alt-zh="'+esc(photo['captionZh'])+'" data-alt-en="'+esc(photo['captionEn'])+'" width="'+str(photo['width'])+'" height="'+str(photo['height'])+'"/></a><figcaption>'+bi(photo['captionZh'],photo['captionEn'])+' <span class="photo-credit">'+bi('作者提供 · 点击查看原图','Author-supplied · Select to view the original')+'</span></figcaption></figure>'
+   body+='<figure class="draft-episode-photo"><a href="../assets/podcast/redwoods/'+photo['file']+'" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="../assets/podcast/redwoods/'+photo['file']+'" alt="'+esc(photo['captionZh'])+'" data-alt-zh="'+esc(photo['captionZh'])+'" data-alt-en="'+esc(photo['captionEn'])+'" width="'+str(photo['width'])+'" height="'+str(photo['height'])+'"/></a><figcaption>'+bi(photo['captionZh'],photo['captionEn'])+' <span class="photo-credit">'+bi(photo.get('creditZh','作者提供 · 点击查看原图'),photo.get('creditEn','Author-supplied · Select to view the original'))+'</span></figcaption></figure>'
   for lang,data in [('zh',z),('en',e)]:body+='<div class="draft-script-body" data-l="'+lang+'" lang="'+('zh-CN' if lang=='zh' else 'en')+'">'+''.join('<p>'+esc(p)+'</p>' for p in data['paragraphs'])+'</div>'
   body+='<p class="draft-script-end">'+bi('中文版口播稿结束 · 尚未录制','End of English script · Not yet recorded')+'</p></div></details>'
  body+='</section></div>'

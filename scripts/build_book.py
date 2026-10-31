@@ -17,7 +17,7 @@ def document(body,depth=0,title='书籍',description=None,extra=''):
  s.html['data-current-page']='books';s.html['data-title-zh']=title;s.html['data-title-en']='Books';s.title.string=title+' · Worst Case, a Bug'
  s.select_one('meta[name="description"]')['content']=description or DATA['positioning']
  for n in s.select('[aria-current="page"]'):del n['aria-current']
- for n in s.select('a[data-nav="books"]'):n['aria-current']='page'
+ for n in s.select('a[data-nav="stories"]'):n['aria-current']='true'
  main=s.select_one('[data-main]');main.clear();main.append(BeautifulSoup(body,'html.parser'))
  if depth:
   for node in s.select('[href],[src]'):
@@ -27,7 +27,7 @@ def document(body,depth=0,title='书籍',description=None,extra=''):
     if val and not re.match(r'^(?:[a-z]+:|/|#|\.\.)',val) and node not in main.descendants:node[attr]='../'*depth+val
  style=s.new_tag('link',rel='stylesheet',href='../'*depth+'css/book.css?v=20261030-book');s.head.append(style)
  js=s.new_tag('script',src='../'*depth+'js/book-reader.js?v=20261030-book');js['defer']='';s.head.append(js)
- for n in s.select('script[src*="site.js"]'):n['src']='../'*depth+'js/site.js?v=20261030-geo'
+ for n in s.select('script[src*="site.js"]'):n['src']='../'*depth+'js/site.js?v=20261030-focused'
  if extra:s.head.append(BeautifulSoup(extra,'html.parser'))
  return str(s)
 def build_web():

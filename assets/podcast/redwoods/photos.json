@@ -5,7 +5,6 @@
     "captionZh": "仰望树冠：深色树干与沿干生长的绿色枝叶。",
     "captionEn": "Looking upward: dark trunks with green growth along their length.",
     "episodes": [
-      "01",
       "05"
     ],
     "width": 1414,
@@ -35,5 +34,33 @@
     "width": 1200,
     "height": 853,
     "source": "Author-supplied photograph for this series"
+  },
+  {
+    "id": "forest-recovery-ai",
+    "file": "forest-recovery-ai.png",
+    "captionZh": "火后森林中的深色树干与新生植被（AI 主题示意）。",
+    "captionEn": "Dark trunks and new understory in a recovering forest (AI illustration).",
+    "episodes": [
+      "01"
+    ],
+    "width": 1536,
+    "height": 1024,
+    "source": "AI-generated with built-in image_gen",
+    "creditZh": "AI 生成 · 非现场实拍 · 点击查看示意图",
+    "creditEn": "AI-generated · Not an on-site photograph · View illustration"
+  },
+  {
+    "id": "golden-fungus-ai",
+    "file": "golden-fungus-ai.png",
+    "captionZh": "深色木材上的金黄色真菌形态（AI 主题示意，非菌种鉴定图）。",
+    "captionEn": "Golden fungal forms on dark wood (AI illustration, not a species identification image).",
+    "episodes": [
+      "04"
+    ],
+    "width": 1536,
+    "height": 1024,
+    "source": "AI-generated with built-in image_gen",
+    "creditZh": "AI 生成 · 非现场实拍 · 点击查看示意图",
+    "creditEn": "AI-generated · Not an on-site photograph · View illustration"
   }
 ]

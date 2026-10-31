@@ -114,7 +114,8 @@
       }
     });
   });
-  const activeLink = navigation.find(link => link.dataset.nav === route);
+  const navSection = {products:'work',quant:'work',podcast:'stories',books:'stories',writing:'stories',poems:'stories'}[route] || route;
+  const activeLink = navigation.find(link => link.dataset.nav === navSection);
   if (activeLink && matchMedia('(max-width: 980px)').matches) {
     const nav = activeLink.parentElement;
     nav.scrollLeft = activeLink.offsetLeft - nav.clientWidth / 2 + activeLink.clientWidth / 2;

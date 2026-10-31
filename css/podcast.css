@@ -90,3 +90,8 @@
 #podcast .podcast-masthead-text .podcast-masthead-description { max-width:65ch; }
 #podcast .podcast-masthead-text h1 { margin-bottom:16px; }
 #podcast .podcast-script-feature>img { object-position:55% center; }
+/* Published audio leads; production notes remain quieter secondary entrances. */
+#podcast .podcast-sections>a:not(#tab-published) { font-size:11px;color:#a0aa93; }
+#podcast .podcast-sections>#tab-upcoming { margin-left:auto; }
+#podcast .podcast-sections>a:not(#tab-published)[aria-selected="true"] { color:#587349;font-size:14px; }
+#podcast .podcast-sections>a:not(#tab-published)[aria-selected="false"] .podcast-tab-count { background:none;padding:0;color:#b1b9a5; }

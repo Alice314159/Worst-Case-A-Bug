@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "file": "forest-recovery-ai.png",
+      "episode": "01",
+      "prompt": "Use case: photorealistic-natural. Asset type: landscape thematic image for a coastal-redwood nature podcast about the forest years after a wildfire. Make a realistic hiking-photography-style landscape image, 3:2. A ground-level view into a mature coast redwood forest with several very tall dark fire-scarred trunks, surviving green crowns, young green shrubs and fern-like understory, a few weathered fallen branches. The scene should convey gradual heterogeneous recovery, not an active fire: some sparse bare branches and some healthy foliage coexist. Soft natural late-morning daylight filters through the canopy; believable forest shadows and natural muted greens, rich brown and charcoal bark, a small amount of pale blue sky. Camera about eye level, moderately wide lens, crisp lifelike textures and credible tree proportions, documentary photographic aesthetics with restrained color. No people, animals, smoke, flames, emergency vehicles, location signs, text, captions or watermarks. This is an AI thematic reconstruction of a generic recovering coast-redwood forest, not a photograph or claim about a specific actual place. No painterly strokes, no fantasy, no exaggerated cinematic glow."
+    },
+    {
+      "file": "golden-fungus-ai.png",
+      "episode": "04",
+      "prompt": "Use case: photorealistic-natural. Asset type: thematic illustration for an unrecorded nature podcast episode about fungi and decomposing wood in a coastal redwood forest. Generate a realistic close-up nature-photography-style image, landscape 3:2 composition. A small, plausible cluster of golden yellow to warm ochre bracket-like fungal fruiting bodies emerges from rough dark fire-scarred bark on an old tree trunk. Delicate irregular organic edges, subtly layered shelves, matte natural surfaces, detailed charcoal fissures and weathered wood. The fungus occupies a modest central-left part of the frame rather than overwhelming the trunk. Background softly out of focus, hints of muted green understory and cool daylight. Match the candid observational quality of a hiking photograph: restrained colors, soft filtered daylight, lifelike texture, no dramatic studio lighting. This is a non-species-specific illustrative scene, not a scientific identification image and not an actual Big Basin photograph. No people, no animals, no text, no captions, no watermark, no fantasy glow, no glossy plastic, no giant fantasy mushrooms, no melted-cheese appearance."
+    }
+  ]
+}
