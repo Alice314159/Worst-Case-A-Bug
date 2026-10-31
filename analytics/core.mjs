@@ -26,6 +26,13 @@ export async function handleAPI(request, env) {
     if (!allowed) return json({ error: 'Origin not allowed' }, 403);
     return new Response(null, { status: 204, headers: { ...cors, 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Authorization', 'Access-Control-Max-Age': '600' } });
   }
+  if (url.pathname === '/api/locale') {
+    if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405, cors);
+    if (origin && !allowed) return json({ error: 'Origin not allowed' }, 403);
+    // Use trusted edge metadata only. No IP, geography or event is stored here.
+    const country = env.MODE === 'cloud' ? request.cf?.country : null;
+    return json({ language: country === 'CN' ? 'zh' : 'en' }, 200, cors);
+  }
   if (url.pathname === '/api/health' && request.method === 'GET') {
     return json({ ok: true, mode: env.MODE || 'cloud', geography: env.MODE === 'local' ? 'unavailable' : 'edge' }, 200, cors);
   }

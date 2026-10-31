@@ -27,15 +27,54 @@
   }
 
   let language = 'en';
+  let explicitLanguage = false;
+  let cachedRegion = false;
   try {
-    if (localStorage.getItem('wcab-lang') === 'zh') language = 'zh';
-  } catch { /* Storage may be disabled; navigation and language still work. */ }
+    const saved = localStorage.getItem('wcab-lang');
+    if (saved === 'zh' || saved === 'en') { language = saved; explicitLanguage = true; }
+  } catch { /* Optional manual preference. */ }
+  if (!explicitLanguage) {
+    try {
+      const cached = JSON.parse(sessionStorage.getItem('wcab-region-language') || 'null');
+      if (cached && ['zh', 'en'].includes(cached.language) && Date.now() - cached.time >= 0 && Date.now() - cached.time < 1800000) {
+        language = cached.language; cachedRegion = true;
+      }
+    } catch { /* Ignore expired or invalid session hints. */ }
+  }
   setLanguage(language);
   toggle.addEventListener('click', () => {
+    explicitLanguage = true;
     const next = root.dataset.lang === 'en' ? 'zh' : 'en';
     setLanguage(next);
     try { localStorage.setItem('wcab-lang', next); } catch { /* Optional preference. */ }
   });
+  async function detectRegionLanguage() {
+    if (explicitLanguage || cachedRegion) return;
+    const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+    const endpoint = local ? window.siteAnalytics?.localEndpoint : window.siteAnalytics?.endpoint;
+    if (!endpoint) return;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 2500);
+    try {
+      const url = new URL('/api/locale', endpoint);
+      if (!local && url.protocol !== 'https:') return;
+      const response = await fetch(url.href, { credentials:'omit', signal:controller.signal, referrerPolicy:'no-referrer' });
+      if (!response.ok) return;
+      const result = await response.json();
+      if (!['zh', 'en'].includes(result.language) || explicitLanguage) return;
+      // Another page may have saved a manual preference while this request ran.
+      try {
+        const saved = localStorage.getItem('wcab-lang');
+        if (saved === 'zh' || saved === 'en') { explicitLanguage = true; setLanguage(saved); return; }
+      } catch { /* Use this page's manual-selection flag. */ }
+      setLanguage(result.language);
+      try { sessionStorage.setItem('wcab-region-language', JSON.stringify({ language:result.language, time:Date.now() })); } catch { /* Optional cache. */ }
+    } catch { /* Keep English when location detection is unavailable. */ }
+    finally { clearTimeout(timeout); }
+  }
+  // The public endpoint configuration is loaded by a later deferred script.
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', detectRegionLanguage, {once:true});
+  else detectRegionLanguage();
   document.querySelector('.skip-link').addEventListener('click', event => {
     event.preventDefault();
     document.querySelector('[data-main]').focus();

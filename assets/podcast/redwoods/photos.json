@@ -1,0 +1,39 @@
+[
+  {
+    "id": "charred-canopy",
+    "file": "charred-canopy.png",
+    "captionZh": "仰望树冠：深色树干与沿干生长的绿色枝叶。",
+    "captionEn": "Looking upward: dark trunks with green growth along their length.",
+    "episodes": [
+      "01",
+      "05"
+    ],
+    "width": 1414,
+    "height": 2120,
+    "source": "Author-supplied photograph for this series"
+  },
+  {
+    "id": "hollow-trunk",
+    "file": "hollow-trunk.png",
+    "captionZh": "树干基部的空洞与周围仍然延伸的树体。",
+    "captionEn": "A hollow at the base of a large trunk.",
+    "episodes": [
+      "03"
+    ],
+    "width": 1366,
+    "height": 2048,
+    "source": "Author-supplied photograph for this series"
+  },
+  {
+    "id": "new-shoot",
+    "file": "new-shoot.png",
+    "captionZh": "焦黑的树皮上，一簇绿色新枝。",
+    "captionEn": "A green shoot against blackened bark.",
+    "episodes": [
+      "02"
+    ],
+    "width": 1200,
+    "height": 853,
+    "source": "Author-supplied photograph for this series"
+  }
+]

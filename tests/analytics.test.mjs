@@ -148,3 +148,26 @@ test('cloud admin submits to same-origin API instead of rejecting empty base URL
   assert(fetched, 'Cloud mode must call its same-origin API');
   assert.match(element('#login-error').textContent, /管理密钥不正确/);
 });
+
+test('locale uses trusted Cloudflare metadata without collecting a pageview or accepting spoofed headers', async () => {
+  const { env, db } = context();
+  const request = country => {
+    const r = new Request('https://example.test/api/locale', {headers:{Origin:'http://localhost:8000', 'CF-IPCountry':'CN', 'X-Forwarded-For':'1.2.3.4'}});
+    if (country) Object.defineProperty(r, 'cf', {value:{country}});
+    return r;
+  };
+  env.MODE = 'cloud';
+  for (const [country, language] of [['CN','zh'],['US','en'],['HK','en'],['TW','en'],['XX','en'],[null,'en']]) {
+    const res = await handleAPI(request(country), env);
+    assert.equal(res.status, 200);
+    assert.equal(res.headers.get('Cache-Control'), 'no-store');
+    assert.equal(res.headers.get('Access-Control-Allow-Origin'), 'http://localhost:8000');
+    assert.deepEqual(await res.json(), {language});
+  }
+  env.MODE = 'local';
+  assert.deepEqual(await (await handleAPI(request('CN'), env)).json(), {language:'en'});
+  assert.equal((await handleAPI(new Request('https://example.test/api/locale', {headers:{Origin:'https://not-allowed.test'}}), env)).status,403);
+  assert.equal((await handleAPI(new Request('https://example.test/api/locale', {method:'POST'}), env)).status,405);
+  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM pageviews').get().n,0);
+  db.close();
+});

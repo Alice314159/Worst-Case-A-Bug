@@ -1,0 +1,3 @@
+# Generated e-books are binary artifacts, even when their metadata contains text.
+*.pdf binary
+*.epub binary

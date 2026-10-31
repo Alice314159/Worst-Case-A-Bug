@@ -29,3 +29,11 @@ python3 scripts/build_book.py
 PDF 构建当前使用 macOS 系统字体 `/System/Library/Fonts/Supplemental/Arial Unicode.ttf`，嵌入子集以供离线阅读。迁移构建环境时需指定可嵌入的中文 TrueType 字体。
 
 改稿应先修改 `manuscript.json`，再重新生成网页、EPUB 与 PDF，避免三个版本分叉。重新生成后需检查页面资源、EPUB XML/资源和 PDF 全文与分页。
+
+## 双语版
+
+- 中文和英文在同一章节 URL 中逐段对应；切换语言不跳回前言。
+- 英文源稿：`manuscript.en.json`；翻译仍为待审订初稿。
+- 全站切换为英文时，封面、目录、正文与下载入口一同切换。中文版使用中文星空封面，英文版使用作者提供的英文星空封面。
+- 英文下载：`downloads/worst-case-a-bug-draft-en.epub` 与 `downloads/worst-case-a-bug-draft-en.pdf`（21 页）。
+- 构建脚本生成中文版本后调用 `scripts/build_book_en.py`，对齐双语页面并生成英文文件。

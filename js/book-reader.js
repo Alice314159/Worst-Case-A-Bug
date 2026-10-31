@@ -24,3 +24,19 @@
     try { localStorage.setItem('wcab-book-font', String(size)); } catch { /* Optional. */ }
   }));
 })();
+
+/* Keep book metadata and accessible labels in sync with the site's language. */
+(() => {
+  const root = document.documentElement;
+  if (root.dataset.currentPage !== 'books') return;
+  const sync = () => {
+    const lang = root.dataset.lang === 'en' ? 'en' : 'zh';
+    const description = root.dataset[lang === 'en' ? 'descriptionEn' : 'descriptionZh'];
+    if (description) document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+    document.querySelectorAll('[data-aria-en]').forEach(element => {
+      element.setAttribute('aria-label', element.dataset[lang === 'en' ? 'ariaEn' : 'ariaZh']);
+    });
+  };
+  new MutationObserver(sync).observe(root, {attributes:true, attributeFilter:['data-lang']});
+  sync();
+})();

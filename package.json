@@ -3,7 +3,10 @@
   "private": true,
   "scripts": {
     "analytics": "node analytics/local.mjs",
-    "test:analytics": "node --test tests/analytics.test.mjs"
+    "test:analytics": "node --test tests/analytics.test.mjs",
+    "test:language": "node --test tests/language.test.mjs"
   },
-  "engines": { "node": ">=26" }
+  "engines": {
+    "node": ">=26"
+  }
 }

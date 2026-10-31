@@ -27,12 +27,12 @@ def document(body,depth=0,title='书籍',description=None,extra=''):
     if val and not re.match(r'^(?:[a-z]+:|/|#|\.\.)',val) and node not in main.descendants:node[attr]='../'*depth+val
  style=s.new_tag('link',rel='stylesheet',href='../'*depth+'css/book.css?v=20261030-book');s.head.append(style)
  js=s.new_tag('script',src='../'*depth+'js/book-reader.js?v=20261030-book');js['defer']='';s.head.append(js)
- for n in s.select('script[src*="site.js"]'):n['src']='../'*depth+'js/site.js?v=20261030-books'
+ for n in s.select('script[src*="site.js"]'):n['src']='../'*depth+'js/site.js?v=20261030-geo'
  if extra:s.head.append(BeautifulSoup(extra,'html.parser'))
  return str(s)
 def build_web():
  charcount=sum(len(''.join(c['paragraphs'])) for c in CH)
- hero=f'''<div class="book-page"><section class="book-hero"><div class="book-cover"><img src="assets/books/restart-cover.png" alt="《大不了就出个Bug》星空版封面：老车、营地、荒野与银河" width="1122" height="1402" fetchpriority="high"/></div><div class="book-hero-copy"><p class="eyebrow">BOOK 01 / {bi('中文散文','CHINESE MEMOIR')}</p><p class="book-edition">{esc(DATA['edition'])}</p><h1>大不了<br/>就出个<span>Bug</span></h1><p class="book-subtitle">{esc(DATA['subtitle'])}</p><p class="book-author">阿布 著</p><p class="book-pitch">从德州小镇到加州阳光，<br/>一个人在异乡把生活一点点重新跑通。</p><div class="book-actions"><a class="studio-button" href="books/restart/preface.html">{bi('开始阅读','Read online')} <span aria-hidden="true">↗</span></a><a class="book-resume text-link" data-book-resume href="books/restart/preface.html" hidden>{bi('继续阅读','Continue reading')} →</a></div><p class="book-facts">5 卷 · 16 章 · 前言与后记 · 约 {charcount/10000:.1f} 万字</p><a class="text-link" href="#downloads">{bi('下载到阅读器','Take it offline')} ↓</a></div></section><section class="book-position"><span class="eyebrow">ABOUT THIS BOOK</span><p>一个 F2 陪读者，在北美生活系统里，<br/>从失重、受限、开荒，到重新找回行动能力和自我定义。</p></section><div class="book-volumes">'''
+ hero=f'''<div class="book-page"><section class="book-hero"><div class="book-cover"><img src="assets/books/restart-cover.png" alt="《大不了就出个Bug》星空版封面：老车、营地、荒野与银河" width="1122" height="1402" fetchpriority="high"/></div><div class="book-hero-copy"><p class="eyebrow">BOOK 01 / {bi('中文散文','CHINESE MEMOIR')}</p><p class="book-edition">{esc(DATA['edition'])}</p><h1>大不了<br/>就出个<span>Bug</span></h1><p class="book-subtitle">{esc(DATA['subtitle'])}</p><p class="book-author">阿布 著</p><p class="book-pitch">从德州小镇到加州阳光，<br/>我们在异乡把生活一点点重新跑通。</p><div class="book-actions"><a class="studio-button" href="books/restart/preface.html">{bi('开始阅读','Read online')} <span aria-hidden="true">↗</span></a><a class="book-resume text-link" data-book-resume href="books/restart/preface.html" hidden>{bi('继续阅读','Continue reading')} →</a></div><p class="book-facts">5 卷 · 16 章 · 前言与后记 · 约 {charcount/10000:.1f} 万字</p><a class="text-link" href="#downloads">{bi('下载到阅读器','Take it offline')} ↓</a></div></section><section class="book-position"><span class="eyebrow">ABOUT THIS BOOK</span><p>一个 F2 陪读者，与 F1 队友一起，<br/>在北美的生活系统里摸索、开荒，重新找回行动能力和自我定义。</p></section><div class="book-volumes">'''
  for v in VOL.values():
   hero+=f'<a href="#volume-{v["id"]}"><span>0{v["id"]}</span><h2>{v["title"]}</h2><strong>{v["subtitle"]}</strong><p>{v["description"]}</p><span class="volume-arrow" aria-hidden="true">↘</span></a>'
  hero+='</div><section class="book-toc" id="contents"><div class="book-section-heading"><div><p class="eyebrow">CONTENTS / '+bi('书中目录','READING ORDER')+'</p><h2>把生活，一章一章搭起来。</h2></div><span>18 篇 · 中文正文</span></div>'
@@ -139,4 +139,6 @@ def build_pdf():
   for p in c['paragraphs']:story.append(Paragraph(esc(p),styles['body']))
  doc.build(story,onFirstPage=page,onLaterPages=page)
 if __name__=='__main__':
- build_web();build_epub();build_pdf();print('Built book landing, 18 static chapters, EPUB 3 and PDF.')
+ build_web();build_epub();build_pdf();
+ from build_book_en import localize_web, build_english_downloads
+ localize_web();build_english_downloads();print('Built book landing, 18 static chapters, EPUB 3 and PDF.')
