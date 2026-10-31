@@ -59,7 +59,7 @@ html:not([data-route]) [data-nav="home"] {
 }
 
 [hidden] { display:none !important; }
-.portfolio-video { display:block; width:100%; aspect-ratio:16/9; object-fit:cover;
+.portfolio-video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain;
   border-radius:8px; background:#111; }
 [data-lang-toggle] { margin-left:auto; }
 [data-unavailable] { opacity:.55; cursor:default; }
@@ -1004,3 +1004,15 @@ html[data-lang="zh"] [data-main] h1:not([lang="en"]) { font-family:var(--font-di
 }
 #podcast .podcast-masthead { margin-bottom:clamp(32px,4vw,48px); }
 .podcast-in-works .podcast-book-link { margin-top:8px; }
+
+/* Keep the trail index aligned despite different source image proportions. */
+#trails .hiking-grid { align-items:stretch; }
+#trails .hiking-card { display:flex;flex-direction:column; }
+#trails .hiking-card img { width:100%;height:auto;aspect-ratio:3/2;object-fit:cover; }
+#trails .hiking-card-body { display:flex;flex-direction:column;flex:1; }
+#trails .hiking-caption { min-height:3.6em; }
+#trails .hiking-route { margin-top:auto; }
+@media(min-width:561px) and (max-width:900px) {
+ #trails .hiking-card { display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr); }
+}
+@media(max-width:560px) { #trails .hiking-caption { min-height:0; } }
