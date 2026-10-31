@@ -40,3 +40,36 @@
   new MutationObserver(sync).observe(root, {attributes:true, attributeFilter:['data-lang']});
   sync();
 })();
+
+/* A compact volume index; chapter pages remain separate, fully readable pages. */
+(() => {
+  const sections = [...document.querySelectorAll('.book-toc .book-volume-section')];
+  const volumes = sections.map(section => {
+    const details = document.createElement('details');
+    details.className = 'book-volume-section book-volume-fold';
+    details.id = section.id;
+    const summary = document.createElement('summary');
+    const banner = section.querySelector('.book-volume-banner');
+    if (!banner) return null;
+    summary.append(banner);
+    const mark = document.createElement('span');
+    mark.className = 'book-volume-fold-mark'; mark.textContent = '+';mark.setAttribute('aria-hidden','true');summary.append(mark);
+    details.append(summary);
+    while (section.firstChild) details.append(section.firstChild);
+    section.replaceWith(details);
+    details.addEventListener('toggle', () => {
+      if (details.open) volumes.forEach(other => { if (other && other !== details) other.open = false; });
+    });
+    return details;
+  }).filter(Boolean);
+  const openHash = () => {
+    const target = volumes.find(volume => '#'+volume.id === location.hash);
+    if (target) { target.open = true; requestAnimationFrame(() => target.scrollIntoView({block:'start'})); }
+  };
+  window.addEventListener('hashchange',openHash);
+  document.querySelectorAll('a[href^="#volume-"]').forEach(link => link.addEventListener('click',() => {
+    const target = volumes.find(volume => '#'+volume.id === link.getAttribute('href'));
+    if (target) target.open = true;
+  }));
+  openHash();
+})();

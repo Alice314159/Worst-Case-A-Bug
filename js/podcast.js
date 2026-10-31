@@ -4,46 +4,11 @@
   const status = document.querySelector('#podcast-status');
   const series = document.querySelector('#podcast-series');
   const feed = document.querySelector('link[type="application/rss+xml"]').href;
-  const tabs = [...document.querySelectorAll('.podcast-sections [role="tab"]')];
-  function selectSection(id, focus = false) {
-    if (!['published', 'upcoming', 'manuscripts'].includes(id)) id = 'published';
-    tabs.forEach(tab => {
-      const selected = tab.getAttribute('aria-controls') === id;
-      tab.setAttribute('aria-selected', String(selected)); tab.tabIndex = selected ? 0 : -1;
-      document.getElementById(tab.getAttribute('aria-controls')).hidden = !selected;
-      if (selected && focus) tab.focus();
-    });
-    document.querySelectorAll('[data-podcast-header]').forEach(part => { part.hidden = part.dataset.podcastHeader !== id; });
-    document.querySelectorAll('[data-podcast-published-only]').forEach(part => { part.hidden = id !== 'published'; });
-    document.querySelector('.podcast-masthead').classList.toggle('podcast-masthead-text', id !== 'published');
-    const titles = {published:['播客','Podcast'],upcoming:['筹备中 · 播客','In preparation · Podcast'],manuscripts:['文稿 · 播客','Scripts · Podcast']};
-    document.documentElement.dataset.titleZh = titles[id][0];
-    document.documentElement.dataset.titleEn = titles[id][1];
-    document.title = titles[id][document.documentElement.dataset.lang === 'en' ? 1 : 0] + ' · Worst Case, a Bug';
-    if (id !== 'published') container.querySelectorAll('audio').forEach(audio => audio.pause());
-  }
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', event => {
-      event.preventDefault(); const id = tab.getAttribute('aria-controls');
-      selectSection(id); history.replaceState(null, '', '#' + id);
-    });
-    tab.addEventListener('keydown', event => {
-      let next;
-      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
-      else if (event.key === 'Home') next = 0;
-      else if (event.key === 'End') next = tabs.length - 1;
-      else return;
-      event.preventDefault(); tabs[next].click(); tabs[next].focus();
-    });
-  });
-  selectSection(location.hash.slice(1));
-  window.addEventListener('hashchange', () => selectSection(location.hash.slice(1)));
   const search = document.querySelector('#episode-search');
   const more = document.querySelector('#episode-more');
   const range = document.querySelector('#episode-range');
   const empty = document.querySelector('#episode-empty');
-  let limit = 8, selectedSeason = null;
+  let limit = 6, selectedSeason = null;
   function applyFilters() {
     const query = (search.value || '').trim().toLocaleLowerCase();
     const articles = [...container.querySelectorAll('article')];
@@ -64,12 +29,14 @@
     more.hidden = visible.size >= matched.length;
     empty.hidden = matched.length !== 0;
   }
-  search.addEventListener('input', () => { limit = 8; applyFilters(); });
-  more.addEventListener('click', () => { limit += 8; applyFilters(); });
+  search.addEventListener('input', () => { limit = 6; applyFilters(); });
+  more.addEventListener('click', () => { limit += 6; applyFilters(); });
   const safeURL = value => {
     try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? url.href : null; }
     catch { return null; }
   };
+  // Feed titles mix emoji prefixes and separators (E22|, E18 , E23 ｜); show one format.
+  const displayTitle = title => (title || '').replace(/^\s*🎧\s*/u, '').replace(/^E(\d+)\s*[|｜]?\s*/, 'E$1 ｜ ');
   const plainText = value => new DOMParser().parseFromString(value || '', 'text/html').body.textContent.trim();
   function bilingual(parent, zh, en) {
     for (const [lang, text] of [['zh', zh], ['en', en]]) {
@@ -96,7 +63,7 @@
         bilingual(button, season === null ? '全部' : season ? `第 ${season} 季` : '未分系列', season === null ? 'All' : season ? `Season ${season}` : 'Other episodes');
         button.addEventListener('click', () => {
           series.querySelectorAll('button').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
-          selectedSeason = season; limit = 8; applyFilters();
+          selectedSeason = season; limit = 6; applyFilters();
         });
         series.append(button);
       }
@@ -129,7 +96,7 @@
       cover.className = 'episode-cover';
       const artwork = window.podcastArtwork || {};
       const entry = artwork[item.link] || artwork[item.title];
-      cover.src = entry || 'assets/podcast/podcast-cover.png';
+      cover.src = entry || 'assets/podcast/podcast-cover.webp';
       cover.alt = '';
       cover.width = 640;
       cover.height = 640;
@@ -138,7 +105,7 @@
       cover.addEventListener('error', () => {
         if (!cover.dataset.fallback) {
           cover.dataset.fallback = 'true';
-          cover.src = 'assets/podcast/podcast-cover.png';
+          cover.src = 'assets/podcast/podcast-cover.webp';
         }
       });
       visual.append(cover);
@@ -150,12 +117,13 @@
       const toggle = document.createElement('button');
       toggle.type = 'button'; toggle.className = 'episode-toggle';
       toggle.setAttribute('aria-expanded', 'false');
-      const title = document.createElement('span'); title.textContent = item.title || 'Untitled episode';
+      const title = document.createElement('span'); title.textContent = displayTitle(item.title) || 'Untitled episode';
       const mark = document.createElement('span'); mark.className = 'episode-toggle-mark'; mark.textContent = '+'; mark.setAttribute('aria-hidden', 'true');
       toggle.append(title, mark); heading.append(toggle); body.append(heading);
       const description = plainText(item.description);
+      const teaserText = description.replace(/^【[^】]*】\s*EP?\d+\s*[|｜]\s*/i, '');
       const teaser = document.createElement('p'); teaser.className = 'episode-teaser';
-      teaser.textContent = description.length > 80 ? description.slice(0, 80) + '…' : description;
+      teaser.textContent = teaserText.length > 80 ? teaserText.slice(0, 80) + '…' : teaserText;
       if (description) body.append(teaser);
       const panel = document.createElement('div'); panel.className = 'episode-expanded';
       panel.id = `episode-panel-${episodeIndex}`; panel.hidden = true;
@@ -194,7 +162,6 @@
       article.append(body);
       container.append(article);
     }
-    document.querySelector('#published-tab-count').textContent = String(sorted.length).padStart(2, '0');
     applyFilters();
     container.setAttribute('aria-busy', 'false');
   }

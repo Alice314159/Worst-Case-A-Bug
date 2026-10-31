@@ -47,7 +47,7 @@ def localize_web():
    replace_node(main.select_one('.book-hero-copy .eyebrow'),'BOOK 01 / 中文散文','BOOK 01 / A MEMOIR IN TRANSLATION')
    replace_node(main.select_one('.book-downloads>div>p:not(.eyebrow)'),'网页、EPUB 与 PDF 按当前语言对应同一份初稿。EPUB 适合手机与电子阅读器，可调字号；PDF 保留固定分页，适合电脑阅读和打印。','The online reader, EPUB and PDF use the same draft in the selected language. EPUB offers adjustable type for phones and e-readers; PDF preserves page layout for reading and printing.')
    cover=main.select_one('.book-cover');orig=cover.img;orig['data-l']='zh'
-   eng=soup.new_tag('img',src='assets/books/restart-cover-en.png',alt='Worst Case, a Bug — Restarting Our Life in North America. Original author-supplied cover.',width='1122',height='1402');eng['data-l']='en';cover.append(eng)
+   eng=soup.new_tag('img',src='assets/books/restart-cover-en.webp',alt='Worst Case, a Bug — Restarting Our Life in North America. Original author-supplied cover.',width='1122',height='1402');eng['data-l']='en';cover.append(eng)
    grid=main.select_one('.book-download-grid');grid.clear()
    for ext in ['epub','pdf']:
     for lang in ['zh','en']:

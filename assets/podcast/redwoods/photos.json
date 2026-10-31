@@ -1,7 +1,7 @@
 [
   {
     "id": "charred-canopy",
-    "file": "charred-canopy.png",
+    "file": "charred-canopy.webp",
     "captionZh": "仰望树冠：深色树干与沿干生长的绿色枝叶。",
     "captionEn": "Looking upward: dark trunks with green growth along their length.",
     "episodes": [
@@ -13,7 +13,7 @@
   },
   {
     "id": "hollow-trunk",
-    "file": "hollow-trunk.png",
+    "file": "hollow-trunk.webp",
     "captionZh": "树干基部的空洞与周围仍然延伸的树体。",
     "captionEn": "A hollow at the base of a large trunk.",
     "episodes": [
@@ -25,7 +25,7 @@
   },
   {
     "id": "new-shoot",
-    "file": "new-shoot.png",
+    "file": "new-shoot.webp",
     "captionZh": "焦黑的树皮上，一簇绿色新枝。",
     "captionEn": "A green shoot against blackened bark.",
     "episodes": [
@@ -37,7 +37,7 @@
   },
   {
     "id": "forest-recovery-ai",
-    "file": "forest-recovery-ai.png",
+    "file": "forest-recovery-ai.webp",
     "captionZh": "火后森林中的深色树干与新生植被（AI 主题示意）。",
     "captionEn": "Dark trunks and new understory in a recovering forest (AI illustration).",
     "episodes": [
@@ -51,7 +51,7 @@
   },
   {
     "id": "golden-fungus-ai",
-    "file": "golden-fungus-ai.png",
+    "file": "golden-fungus-ai.webp",
     "captionZh": "深色木材上的金黄色真菌形态（AI 主题示意，非菌种鉴定图）。",
     "captionEn": "Golden fungal forms on dark wood (AI illustration, not a species identification image).",
     "episodes": [

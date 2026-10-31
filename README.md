@@ -4,18 +4,19 @@ A bilingual static personal website for GitHub Pages. No build step is required.
 
 ## Pages
 
-- `index.html` — compact homepage with selected work and links
-- `products.html` — project cards with platform filters
-- `products/*.html` — 15 standalone product detail pages with features and previews
+- `index.html` — homepage: introduction, two featured works, latest podcast episode
+- `products.html` — main products and a compact small-tools list
+- `products/*.html` — 15 standalone product detail pages (Strata and ParquetViewer are listed under quant)
 - `quant.html` — Vesper quant project archive
 - `quant/*.html` — eight independent research project pages
-- `podcast.html` — podcast episode archive and audio players
-- `writing.html` — short essay index
+- `podcast.html` — published episodes, with unrecorded scripts and topics at the end
+- `writing.html` — books & writing: the book, essays and poems (`#poems`)
+- `book.html`, `books/restart/*.html` — book contents, chapters and downloads
 - `essays/*.html` — three individual bilingual reading pages
-- `poems.html` — illustrated poetry collection
 - `poems/*.html` — two individual poem reading pages
-- `journal.html` — video and travel, with `#film` and `#trails` anchors
-- `about.html` — background, approach and contact links
+- `journal.html` — trails and film, with `#trails` and `#film` anchors
+- `about.html` — background and contact links
+- `work.html`, `stories.html`, `poems.html` — redirects kept for old links
 - `projects/index.html` — compatibility redirect to the product catalog
 
 Every page includes its own content, shared navigation and relative asset links.
@@ -111,5 +112,5 @@ location fields, referring sites and device/browser summaries. Local geography
 remains Unknown. The frontend production endpoint is configured for the Cloudflare
 Worker at https://wcab-analytics.worstcaseabug.workers.dev; publishing the frontend
 update enables online collection.
-Keys and data are kept outside the website root. See `analytics/README.md` for
+Keys and data are kept outside the website root. Never place key files inside this folder; `secret/` is git-ignored as a safeguard. See `analytics/README.md` for
 storage, privacy definitions, startup, backup and production limitations.

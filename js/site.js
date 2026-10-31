@@ -114,7 +114,7 @@
       }
     });
   });
-  const navSection = {products:'work',quant:'work',podcast:'stories',books:'stories',writing:'stories',poems:'stories'}[route] || route;
+  const navSection = {products:'work',quant:'work',books:'writing',poems:'writing',stories:'writing'}[route] || route;
   const activeLink = navigation.find(link => link.dataset.nav === navSection);
   if (activeLink && matchMedia('(max-width: 980px)').matches) {
     const nav = activeLink.parentElement;
