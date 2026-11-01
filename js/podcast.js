@@ -98,7 +98,7 @@
       const entry = artwork[item.link] || artwork[item.title];
       // List covers render at <=88px, so load the 192px thumbnail; fall back to full art.
       const thumb = entry && entry.replace('/episodes/', '/episodes/thumbs/');
-      cover.src = thumb || 'assets/podcast/podcast-cover.webp';
+      cover.src = thumb || 'assets/podcast/podcast-cover-192.webp';
       cover.alt = '';
       cover.width = 192;
       cover.height = 192;
@@ -109,7 +109,7 @@
           cover.src = entry;
         } else if (!cover.dataset.fallback) {
           cover.dataset.fallback = 'true';
-          cover.src = 'assets/podcast/podcast-cover.webp';
+          cover.src = 'assets/podcast/podcast-cover-192.webp';
         }
       });
       visual.append(cover);
