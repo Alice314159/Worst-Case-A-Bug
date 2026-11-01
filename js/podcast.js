@@ -96,14 +96,18 @@
       cover.className = 'episode-cover';
       const artwork = window.podcastArtwork || {};
       const entry = artwork[item.link] || artwork[item.title];
-      cover.src = entry || 'assets/podcast/podcast-cover.webp';
+      // List covers render at <=88px, so load the 192px thumbnail; fall back to full art.
+      const thumb = entry && entry.replace('/episodes/', '/episodes/thumbs/');
+      cover.src = thumb || 'assets/podcast/podcast-cover.webp';
       cover.alt = '';
-      cover.width = 640;
-      cover.height = 640;
+      cover.width = 192;
+      cover.height = 192;
       cover.loading = container.childElementCount < 2 ? 'eager' : 'lazy';
       cover.decoding = 'async';
       cover.addEventListener('error', () => {
-        if (!cover.dataset.fallback) {
+        if (thumb && cover.src.indexOf('/thumbs/') !== -1) {
+          cover.src = entry;
+        } else if (!cover.dataset.fallback) {
           cover.dataset.fallback = 'true';
           cover.src = 'assets/podcast/podcast-cover.webp';
         }
