@@ -16,3 +16,19 @@ document.querySelectorAll('.journal-trail-video').forEach(details => {
     if (!details.open) details.querySelector('video')?.pause();
   });
 });
+
+/* Muted clips further down the page start loading and playing only once they are on screen. */
+document.querySelectorAll('video[data-autoplay-visible]').forEach(video => {
+  const start = () => {
+    video.preload = 'auto';
+    video.play().catch(() => {});
+  };
+  if (!('IntersectionObserver' in window)) { start(); return; }
+  const observer = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) {
+      observer.disconnect();
+      start();
+    }
+  }, { threshold: 0.35 });
+  observer.observe(video);
+});

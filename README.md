@@ -43,6 +43,11 @@ active navigation and poem motion controls; it no longer switches page content.
 `assets/poems/` contains poem illustrations; `assets/podcast/` contains cover art;
 `assets/uploads/` contains user images; `assets/videos/` contains the short film.
 
+Podcast episode art in `assets/podcast/episodes/` is stored at 1000×1000 WebP;
+`assets/podcast/episodes/thumbs/` holds 192×192 copies used by the podcast list
+and other small covers. When adding an episode image, add both sizes.
+Only pages that contain an `<image-slot>` element load `js/image-slot.js`.
+
 Travel and About use captioned existing artwork until personal photographs are
 supplied. Unconfigured repository links and contact details remain marked as
 unavailable. The essays are three short bilingual notes on building tools,
