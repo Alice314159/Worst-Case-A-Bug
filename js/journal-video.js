@@ -9,3 +9,10 @@
     });
   });
 })();
+
+/* Pause an inline trail film when its disclosure is closed. */
+document.querySelectorAll('.journal-trail-video').forEach(details => {
+  details.addEventListener('toggle', () => {
+    if (!details.open) details.querySelector('video')?.pause();
+  });
+});
