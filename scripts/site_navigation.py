@@ -13,7 +13,19 @@ FOLLOW=[('rss','订阅播客','Podcast RSS','https://feed.firstory.me/rss/user/c
  ('code','GitHub','GitHub','https://github.com/Alice314159')]
 def label(zh,en):return BeautifulSoup('<span data-l="zh">'+zh+'</span><span data-l="en">'+en+'</span>','html.parser')
 def icon(name):return BeautifulSoup('<svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+ICONS[name]+'</svg>','html.parser')
+# Cache-busting query strings; bump one when its file changes.
+VERSIONS={'style':'20261102-sidebar','nav':'20261102-sidebar','site':'20261031-structure'}
 GROUPS={'home':'home','work':'work','products':'work','quant':'work','stories':'writing','podcast':'podcast','books':'writing','writing':'writing','poems':'writing','journal':'journal','about':'about'}
+def brand(soup,prefix):
+ """Logo, site name and language toggle at the top of the sidebar."""
+ return BeautifulSoup(
+  '<div class="site-brand-bar">'
+  f'<a class="site-brand" href="{prefix}index.html">'
+  f'<img alt="" class="site-brand-mark" decoding="async" height="40" src="{prefix}assets/podcast/podcast-cover-192.webp" width="40"/>'
+  '<span class="site-brand-name"><span data-l="zh">大不了<br/>就出个 Bug</span><span data-l="en">Worst Case,<br/>a Bug</span></span>'
+  '</a>'
+  '<button aria-label="Switch to Chinese" class="site-lang-toggle" data-lang-toggle="" type="button">中文</button>'
+  '</div>','html.parser')
 def apply_navigation(soup, depth=0):
  sidebar=soup.select_one('[data-sidebar]')
  if not sidebar:return
@@ -22,9 +34,16 @@ def apply_navigation(soup, depth=0):
  route=soup.html.get('data-current-page','home');group=GROUPS.get(route,route)
  soup.html['data-nav-section']=group
  prefix='../'*depth
+ # Every sidebar style lives in css/nav.css; the markup carries classes only.
+ if sidebar.has_attr('style'):del sidebar['style']
+ sidebar['class']=['site-sidebar']
+ brand_bar=sidebar.find('div',recursive=False)
+ if brand_bar and not brand_bar.has_attr('data-side-foot'):brand_bar.replace_with(brand(soup,prefix))
+ else:sidebar.insert(0,brand(soup,prefix))
  nav.clear();nav['aria-label']='Main navigation';nav['class']=['site-main-nav']
+ if nav.has_attr('style'):del nav['style']
  for key,zh,en,file in MAIN:
-  a=soup.new_tag('a',href=prefix+file);a['data-nav']=key;a['style']='padding:12px 20px;color:#53664b'
+  a=soup.new_tag('a',href=prefix+file);a['data-nav']=key
   if group==key:a['aria-current']='page' if route==key and depth==0 else 'true'
   a.append(label(zh,en));nav.append(a)
   if key not in SECTIONS:continue
@@ -45,9 +64,9 @@ def apply_navigation(soup, depth=0):
  sidebar.append(foot)
  for css in soup.select('link[href*="css/nav.css"]'):css.decompose()
  main_css=soup.select_one('link[href*="css/style.css"]')
- if main_css:main_css.insert_after(soup.new_tag('link',href=prefix+'css/nav.css?v=20261031-nav',rel='stylesheet'))
- for style in soup.select('link[href*="css/style.css"]'):style['href']=prefix+'css/style.css?v=20261031-structure'
- for js in soup.select('script[src*="js/site.js"]'):js['src']=prefix+'js/site.js?v=20261031-structure'
+ if main_css:main_css.insert_after(soup.new_tag('link',href=prefix+'css/nav.css?v='+VERSIONS['nav'],rel='stylesheet'))
+ for style in soup.select('link[href*="css/style.css"]'):style['href']=prefix+'css/style.css?v='+VERSIONS['style']
+ for js in soup.select('script[src*="js/site.js"]'):js['src']=prefix+'js/site.js?v='+VERSIONS['site']
 def update_all():
  for p in ROOT.rglob('*.html'):
   if any(part in ['.git','node_modules','admin'] for part in p.relative_to(ROOT).parts):continue
