@@ -14,7 +14,7 @@ FOLLOW=[('rss','订阅播客','Podcast RSS','https://feed.firstory.me/rss/user/c
 def label(zh,en):return BeautifulSoup('<span data-l="zh">'+zh+'</span><span data-l="en">'+en+'</span>','html.parser')
 def icon(name):return BeautifulSoup('<svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+ICONS[name]+'</svg>','html.parser')
 # Cache-busting query strings; bump one when its file changes.
-VERSIONS={'style':'20261102-sidebar','nav':'20261102-sidebar','site':'20261031-structure'}
+VERSIONS={'style':'20261102-sidebar','nav':'20261102-sidebar','site':'20261102-locale'}
 GROUPS={'home':'home','work':'work','products':'work','quant':'work','stories':'writing','podcast':'podcast','books':'writing','writing':'writing','poems':'writing','journal':'journal','about':'about'}
 def brand(soup,prefix):
  """Logo, site name and language toggle at the top of the sidebar."""

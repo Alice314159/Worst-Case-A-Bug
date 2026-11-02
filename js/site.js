@@ -72,9 +72,12 @@
     } catch { /* Keep English when location detection is unavailable. */ }
     finally { clearTimeout(timeout); }
   }
-  // The public endpoint configuration is loaded by a later deferred script.
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', detectRegionLanguage, {once:true});
-  else detectRegionLanguage();
+  // The endpoint is set by js/analytics-config.js, a later deferred script. Deferred
+  // scripts run while readyState is already "interactive", so wait for
+  // DOMContentLoaded (fired after every deferred script) unless the config is ready.
+  const configReady = window.siteAnalytics || document.readyState === 'complete';
+  if (document.readyState !== 'loading' && configReady) detectRegionLanguage();
+  else document.addEventListener('DOMContentLoaded', detectRegionLanguage, {once:true});
   document.querySelector('.skip-link').addEventListener('click', event => {
     event.preventDefault();
     document.querySelector('[data-main]').focus();
