@@ -8,6 +8,5 @@ app-design.mp4
 app-design-poster.webp
 ```
 
-Reference videos from `index.html` with paths such as
-`assets/videos/app-design.mp4`. Replace a video card's `<image-slot>` with a
-native `<video>` element; `<image-slot>` is for images only.
+Reference videos from `journal.html` with paths such as
+`assets/videos/app-design.mp4`, using a native `<video>` element.

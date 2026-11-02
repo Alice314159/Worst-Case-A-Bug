@@ -51,7 +51,6 @@ active navigation and poem motion controls; it no longer switches page content.
 Podcast episode art in `assets/podcast/episodes/` is stored at 1000×1000 WebP;
 `assets/podcast/episodes/thumbs/` holds 192×192 copies used by the podcast list
 and other small covers. When adding an episode image, add both sizes.
-Only pages that contain an `<image-slot>` element load `js/image-slot.js`.
 
 Travel and About use captioned existing artwork until personal photographs are
 supplied. Unconfigured repository links and contact details remain marked as
@@ -63,7 +62,6 @@ reviewing research and protecting attention.
 Place videos and matching posters in `assets/videos/`. Use native `<video
 controls playsinline preload="metadata">` with a poster and `<source>` in
 `journal.html`. The site is static; commit media with the HTML for hosting.
-`<image-slot>` accepts images only, not video playback.
 
 ## Podcast RSS
 
@@ -91,6 +89,18 @@ python3 -m http.server 8000
 Open `http://localhost:8000`. For GitHub Pages, select the `main` branch and the
 repository root in Pages settings. Publish the complete directory tree so that
 nested product, poem and essay links resolve.
+
+## Tests
+
+```bash
+npm test
+```
+
+Runs every `tests/*.test.mjs` file with Node's built-in test runner: analytics,
+language detection, and a site check that every internal link, asset and anchor
+resolves, every content page is in `sitemap.xml`, and every page has a title and
+description. GitHub Actions (`.github/workflows/test.yml`) runs the same command
+on every push to `main` and on pull requests.
 
 ## Quantitative project archive
 
