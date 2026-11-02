@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex" name="robots"/>
+<title>Page not found · Worst Case, a Bug</title>
+<!-- GitHub Pages serves this file for missing paths at any depth, so every link is absolute. -->
+<link href="/Worst-Case-A-Bug/favicon.ico" rel="icon" sizes="any"/>
+<script>
+(function () {
+  var base = '/Worst-Case-A-Bug/';
+  var pages = ['products', 'quant', 'podcast', 'writing', 'journal', 'about', 'book'];
+  var path = location.pathname.replace(/\/+$/, '');
+  // Forward extensionless addresses such as /products to products.html.
+  for (var i = 0; i < pages.length; i++) {
+    if (path === base + pages[i]) { location.replace(base + pages[i] + '.html' + location.hash); return; }
+  }
+  try {
+    var l = localStorage.getItem('wcab-lang');
+    if (l === 'zh' || l === 'en') {
+      document.documentElement.setAttribute('data-lang', l);
+      document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+      if (l === 'zh') document.title = '页面不存在 · 大不了就出个 Bug';
+    }
+  } catch (e) { /* Optional preference. */ }
+})();
+</script>
+<style>
+:root { color-scheme:light; }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px 20px; background:#f8f7f3; color:#171c26; font-family:"Archivo","Noto Sans SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; }
+html[data-lang="en"] [data-l="zh"], html[data-lang="zh"] [data-l="en"] { display:none; }
+main { max-width:520px; }
+.code { font-size:13px; font-weight:700; letter-spacing:.08em; color:#3f5a37; margin:0 0 14px; }
+h1 { font-size:clamp(28px,5vw,40px); line-height:1.25; font-weight:500; margin:0 0 14px; }
+p { font-size:16px; line-height:1.7; color:rgba(23,28,38,.68); margin:0 0 26px; }
+nav { display:flex; flex-wrap:wrap; gap:10px; }
+a { display:inline-flex; padding:9px 14px; border:1px solid rgba(23,28,38,.16); border-radius:8px; background:#fff; color:#2f3d2c; font-size:14px; font-weight:600; text-decoration:none; }
+a:first-child { background:#26392c; border-color:#26392c; color:#fff; }
+a:hover { border-color:#3f5a37; }
+a:focus-visible { outline:2px solid #3f5a37; outline-offset:2px; }
+</style>
+</head>
+<body>
+<main>
+<p class="code">404</p>
+<h1><span data-l="zh">这个页面不存在。</span><span data-l="en">This page doesn’t exist.</span></h1>
+<p><span data-l="zh">链接可能已经更改，或者地址输入有误。可以从下面这些地方继续浏览。</span><span data-l="en">The link may have changed, or the address may be mistyped. You can continue from one of these pages.</span></p>
+<nav>
+<a href="/Worst-Case-A-Bug/"><span data-l="zh">回到首页</span><span data-l="en">Home</span></a>
+<a href="/Worst-Case-A-Bug/products.html"><span data-l="zh">产品</span><span data-l="en">Products</span></a>
+<a href="/Worst-Case-A-Bug/podcast.html"><span data-l="zh">播客</span><span data-l="en">Podcast</span></a>
+<a href="/Worst-Case-A-Bug/writing.html"><span data-l="zh">书与写作</span><span data-l="en">Writing</span></a>
+</nav>
+</main>
+</body>
+</html>

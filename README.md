@@ -119,3 +119,13 @@ Worker at https://wcab-analytics.worstcaseabug.workers.dev; publishing the front
 update enables online collection.
 Keys and data are kept outside the website root. Never place key files inside this folder; `secret/` is git-ignored as a safeguard. See `analytics/README.md` for
 storage, privacy definitions, startup, backup and production limitations.
+
+## Head metadata, 404 and sitemap
+
+Each page's `<head>` starts with a small inline script that applies the saved
+language before first paint, followed by the favicon and Open Graph tags. The
+Open Graph URLs, `sitemap.xml` and the absolute links in `404.html` use the
+published address `https://alice314159.github.io/Worst-Case-A-Bug/`; update
+them together if the site moves to another address. Share images live in
+`assets/og/` (`book.jpg` for the book pages, `site.jpg` elsewhere). When adding
+a page, copy this head block from a neighbour and add the page to `sitemap.xml`.
