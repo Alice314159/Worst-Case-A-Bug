@@ -90,6 +90,18 @@ Open `http://localhost:8000`. For GitHub Pages, select the `main` branch and the
 repository root in Pages settings. Publish the complete directory tree so that
 nested product, poem and essay links resolve.
 
+## Tests
+
+```bash
+npm test
+```
+
+Runs every `tests/*.test.mjs` file with Node's built-in test runner: analytics,
+language detection, and a site check that every internal link, asset and anchor
+resolves, every content page is in `sitemap.xml`, and every page has a title and
+description. GitHub Actions (`.github/workflows/test.yml`) runs the same command
+on every push to `main` and on pull requests.
+
 ## Quantitative project archive
 
 The Vesper archive groups strategy/monitoring, data/tools, and models/sentiment.
