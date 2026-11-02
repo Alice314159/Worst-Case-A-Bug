@@ -51,7 +51,6 @@ active navigation and poem motion controls; it no longer switches page content.
 Podcast episode art in `assets/podcast/episodes/` is stored at 1000×1000 WebP;
 `assets/podcast/episodes/thumbs/` holds 192×192 copies used by the podcast list
 and other small covers. When adding an episode image, add both sizes.
-Only pages that contain an `<image-slot>` element load `js/image-slot.js`.
 
 Travel and About use captioned existing artwork until personal photographs are
 supplied. Unconfigured repository links and contact details remain marked as
@@ -63,7 +62,6 @@ reviewing research and protecting attention.
 Place videos and matching posters in `assets/videos/`. Use native `<video
 controls playsinline preload="metadata">` with a poster and `<source>` in
 `journal.html`. The site is static; commit media with the HTML for hosting.
-`<image-slot>` accepts images only, not video playback.
 
 ## Podcast RSS
 

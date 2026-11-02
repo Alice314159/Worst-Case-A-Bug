@@ -20,9 +20,6 @@
     });
     const productFilters = document.querySelector('.product-filters[aria-label="Product platform"]');
     if (productFilters) productFilters.setAttribute('aria-label', language === 'zh' ? '产品平台筛选' : 'Product platform filters');
-    document.querySelectorAll('[data-placeholder-en]').forEach(slot => {
-      slot.setAttribute('placeholder', slot.getAttribute(`data-placeholder-${language}`));
-    });
     updateTitle();
   }
 
