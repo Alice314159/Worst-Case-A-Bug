@@ -1,6 +1,7 @@
 /* Public release metadata only. Publishing workflow: docs/APP_DOWNLOADS.md. */
 window.appDownloads = {
   readshot: {
+    releaseUrl: 'https://github.com/Alice314159/Worst-Case-A-Bug/releases/tag/readshot-v1.0.0-beta.1',
     version: '1.0.0 · Beta',
     notesZh: 'Android 测试版，使用调试证书签名。下载后打开 APK，按系统提示允许安装。后续正式签名版可能需要卸载测试版后安装，请先备份数据。',
     notesEn: 'Android beta signed with a debug certificate. Open the downloaded APK and follow Android’s installation prompts. A future production-signed release may require uninstalling this beta first; back up your data before switching.',

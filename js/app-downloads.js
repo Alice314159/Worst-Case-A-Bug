@@ -16,6 +16,7 @@
   for (const container of document.querySelectorAll('[data-app-downloads]')) {
     const release = window.appDownloads?.[container.dataset.appDownloads];
     const files = Array.isArray(release?.files) ? release.files.filter(file => file && safeURL(file.url) && platformNames[file.platform]) : [];
+    const releaseUrl = safeURL(release?.releaseUrl);
     if (!files.length) continue;
     const heading = document.createElement('div'); heading.className = 'download-heading';
     const title = document.createElement('h2'); bilingual(title, '下载与安装', 'Download & install'); heading.append(title);
@@ -27,8 +28,9 @@
       const info = document.createElement('div');
       const name = document.createElement('strong'); name.textContent = platformNames[file.platform] + (file.arch ? ` · ${file.arch}` : '');
       const detail = document.createElement('p'); detail.textContent = [file.name, file.minimumOS, formatSize(file.sizeBytes)].filter(Boolean).join(' · '); info.append(name, detail);
-      const link = document.createElement('a'); link.className = 'studio-button'; link.href = safeURL(file.url); link.rel = 'noopener noreferrer';
-      bilingual(link, file.platform === 'ios' ? '获取 App ↗' : '下载安装包 ↓', file.platform === 'ios' ? 'Get the app ↗' : 'Download ↓');
+      const link = document.createElement('a'); link.className = 'studio-button'; link.href = releaseUrl || safeURL(file.url); link.rel = 'noopener noreferrer';
+      if (releaseUrl) bilingual(link, '前往 GitHub 下载 ↗', 'Download on GitHub ↗');
+      else bilingual(link, file.platform === 'ios' ? '获取 App ↗' : '下载安装包 ↓', file.platform === 'ios' ? 'Get the app ↗' : 'Download ↓');
       // Cross-origin hosts must supply their own attachment response headers.
       if (new URL(link.href).origin === location.origin) link.setAttribute('download', '');
       row.append(info, link);
